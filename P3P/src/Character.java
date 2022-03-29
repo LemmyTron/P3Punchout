@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class Character{
 	
-	public int x, y; //coordinates of big chungus 
+	public int x, y; //coordinates of big chungu
 	public double sh = 1.2 ; //horizontal speed variable 
 	public double sv = 0 ; //vertical speed variable
 	public double g = .7; // gravity acceleration variable 
