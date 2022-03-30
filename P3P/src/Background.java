@@ -10,7 +10,6 @@ import java.net.URL;
 
 public class Background{
 	
-	//add location attributes
 	private int x, y; //position of the bird
 	private Image img; 	
 	private AffineTransform tx;
@@ -27,7 +26,7 @@ public class Background{
 	public void changePicture(String newFileName) {
 		img = getImage(newFileName);
 		init(x, y);
-	}
+	} 
 	
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
