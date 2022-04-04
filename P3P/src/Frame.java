@@ -26,6 +26,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//create objects for background, chungus, carrots, the lasers, and a title
 	Background 	bg 	= new Background(0, 0);
 
+	Character  character1 	= new Character(50, 100);
 
 	//create a font object for drawing the score
 	
@@ -40,6 +41,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		super.paintComponent(g);
 		//paint the background
 		bg.paint(g);
+		character1.paint(g);
 		//paint all objects in the orange array
 		
 	}
@@ -50,7 +52,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public Frame() {
 		JFrame f = new JFrame("CHUNGUS");
-		f.setSize(new Dimension(700, 450));
+		f.setSize(new Dimension(600, 450));
 		f.setBackground(Color.blue);
 		f.add(this);
 		f.setResizable(false);
@@ -100,8 +102,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 			System.out.println(arg0.getKeyCode());
-		//start jetpacking when the spacebar is pressed 
-		//change boolean for right sprite
+			   if(arg0.getKeyCode() == 39) {
+				   character1.moveRight();
+			   }
+			   if(arg0.getKeyCode() == 38) {
+				   character1.jump();
+			   }
 		
 
 	}

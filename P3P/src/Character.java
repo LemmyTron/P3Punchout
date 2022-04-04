@@ -10,17 +10,17 @@ import java.awt.geom.Area;
 import java.net.URL;
 public class Character {
 	public int x, y; 
+	public int hv, vv;
 	private Image img; 	
 
 	private AffineTransform tx;
 
 	//create constructor for object
 	public Character(int x, int y) {
-		//initialize chungus with given coordinates 
 		this.x = x;
 		this.y = y;
-		//load the big chungus images 
-		img = getImage("/imgs/bigChungus.png"); 
+		//load the character images 
+		img = getImage("testMan.png"); 
 	
 		
 		tx = AffineTransform.getTranslateInstance(x, y );
@@ -35,17 +35,20 @@ public class Character {
 	
 	}
 	
-	
+	public void jump()
+	{
+		vv += 11; 
+	}
 	
 	public void moveLeft()
 	{
-	x -= 9.5;
+	hv -= 3.7;
 	}
 	
 	
 	public void moveRight()
 	{
-	x += 9.5;
+	hv += 3.7;
 	}
 	
 	private void init(double a, double b) {
@@ -64,5 +67,16 @@ public class Character {
 		return tempImage;
 	}
 	
-	
+	public void paint(Graphics g) {
+		//these are the 2 lines of code needed draw an image on the screen
+		Graphics2D g2 = (Graphics2D) g;
+		
+		
+		//call update to update the actualy picture location
+		update();
+		g2.drawImage(img, tx, null);
+		
+		
+
+	}
 }

@@ -15,7 +15,7 @@ public class Background{
 	private AffineTransform tx;
 
 	public Background(int x, int y) {
-		img = getImage("/imgs/basedLilypad.png"); //load the image for Tree
+		img = getImage("compLab.png"); //load the image for Tree
 		this.x = x;
 		this.y = y;
 		tx = AffineTransform.getTranslateInstance(x, y );
@@ -43,7 +43,7 @@ public class Background{
 	/* update the picture variable location */
 	private void update() {
 		tx.setToTranslation(x, y);
-		tx.scale(1, 1    );
+		tx.scale(6, 6    );
 	}
 	
 	private void init(double a, double b) {
