@@ -11,6 +11,8 @@ import java.net.URL;
 public class Character {
 	public int x, y; 
 	public int hv, vv;
+	
+	public double g = .007; 
 	private Image img; 	
 
 	private AffineTransform tx;
@@ -30,8 +32,12 @@ public class Character {
 	
 	public void update() {
 		
+		x+=hv;
+		y-=vv;
+		regulate();
+		
 		tx.setToTranslation(x, y);
-		tx.scale(.071, .071);
+		tx.scale(.12, .12);
 	
 	}
 	
@@ -42,13 +48,29 @@ public class Character {
 	
 	public void moveLeft()
 	{
-	hv -= 3.7;
+	hv -= 2.03;
 	}
 	
 	
 	public void moveRight()
 	{
-	hv += 3.7;
+	hv += 2.033;
+	}
+	
+	public void regulate()
+	{
+		if(hv > 0)
+		{
+			hv-=.001;
+		}
+		
+		if(hv < 0)
+		{
+			hv+=.001;
+		}
+		
+		
+		
 	}
 	
 	private void init(double a, double b) {

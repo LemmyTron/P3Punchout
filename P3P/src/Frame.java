@@ -108,7 +108,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   if(arg0.getKeyCode() == 38) {
 				   character1.jump();
 			   }
-		
+			   if(arg0.getKeyCode() == 37) {
+				   character1.moveLeft();
+			   }
 
 	}
 
