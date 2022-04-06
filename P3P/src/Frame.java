@@ -26,7 +26,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//create objects for background, chungus, carrots, the lasers, and a title
 	Background 	bg 	= new Background(0, 0);
 
-	Character  character1 	= new Character(50, 100);
+	Character  character1 	= new Character(80, 330);
 
 	//create a font object for drawing the score
 	
@@ -44,6 +44,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		character1.paint(g);
 		//paint all objects in the orange array
 		
+		
+		
 	}
 	
 	public static void main(String[] arg) {
@@ -52,7 +54,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public Frame() {
 		JFrame f = new JFrame("CHUNGUS");
-		f.setSize(new Dimension(600, 450));
+		f.setSize(new Dimension(800, 450));
 		f.setBackground(Color.blue);
 		f.add(this);
 		f.setResizable(false);

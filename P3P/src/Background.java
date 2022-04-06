@@ -42,8 +42,8 @@ public class Background{
 	}
 	/* update the picture variable location */
 	private void update() {
-		tx.setToTranslation(x, y);
-		tx.scale(6, 6    );
+		tx.setToTranslation(x - 100, y);
+		tx.scale(9.5, 9.5);
 	}
 	
 	private void init(double a, double b) {

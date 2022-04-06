@@ -33,7 +33,7 @@ public class Character {
 	public void update() {
 		
 		x+=hv;
-		y-=vv;
+		y+=vv;
 		regulate();
 		
 		tx.setToTranslation(x, y);
@@ -43,7 +43,7 @@ public class Character {
 	
 	public void jump()
 	{
-		vv += 11; 
+		vv -= 11; 
 	}
 	
 	public void moveLeft()
@@ -70,6 +70,15 @@ public class Character {
 		}
 		
 		
+		if(y > 350)
+		{
+			vv++;
+		}
+		if(y == 350)
+		{
+			vv=0;
+			y = 350;
+		}
 		
 	}
 	
