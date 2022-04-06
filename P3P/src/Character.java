@@ -80,7 +80,7 @@ public class Character {
 			y = 350;
 		}
 		
-	}
+	} //yu
 	
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
