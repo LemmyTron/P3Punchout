@@ -12,7 +12,7 @@ public class Character {
 	public int x, y; 
 	public int hv, vv;
 	
-	public double g = .007; 
+	public double g = .001; 
 	private Image img; 	
 
 	private AffineTransform tx;
@@ -34,6 +34,7 @@ public class Character {
 		
 		x+=hv;
 		y+=vv;
+		vv+=g;
 		regulate();
 		
 		tx.setToTranslation(x, y);
@@ -43,42 +44,54 @@ public class Character {
 	
 	public void jump()
 	{
-		vv -= 11; 
+		vv -= 22; 
 	}
 	
 	public void moveLeft()
 	{
-	hv -= 2.03;
+	hv -= 7.03;
 	}
 	
 	
 	public void moveRight()
 	{
-	hv += 2.033;
+	hv += 7.03;
 	}
 	
 	public void regulate()
 	{
 		if(hv > 0)
 		{
-			hv-=.001;
+			hv-=.0001;
 		}
 		
 		if(hv < 0)
 		{
-			hv+=.001;
+			hv+=.0001;
 		}
 		
 		
-		if(y > 350)
+		if(hv > 12)
+		{
+			hv = 12;
+		}
+		
+		
+		if(hv < -12)
+		{
+			hv = -12;
+		}
+		
+		if(y < 350)
 		{
 			vv++;
 		}
-		if(y == 350)
+		if(y > 350)
 		{
 			vv=0;
 			y = 350;
 		}
+		System.out.print(vv);
 		
 	} //yu
 	

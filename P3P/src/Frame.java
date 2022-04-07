@@ -26,7 +26,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//create objects for background, chungus, carrots, the lasers, and a title
 	Background 	bg 	= new Background(0, 0);
 
-	Character  character1 	= new Character(80, 330);
+	Character  character1 	= new Character(80, 300);
 
 	//create a font object for drawing the score
 	
@@ -107,7 +107,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   if(arg0.getKeyCode() == 39) {
 				   character1.moveRight();
 			   }
-			   if(arg0.getKeyCode() == 38) {
+			   if(arg0.getKeyCode() == 38 && character1.vv == 0) {
 				   character1.jump();
 			   }
 			   if(arg0.getKeyCode() == 37) {
