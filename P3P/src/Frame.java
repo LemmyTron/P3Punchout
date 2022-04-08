@@ -23,7 +23,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	//create a variable for the high score
 	
-	//create objects for background, chungus, carrots, the lasers, and a title
 	Background 	bg 	= new Background(0, 0);
 
 	Character  character1 	= new Character(80, 300);
