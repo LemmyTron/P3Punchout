@@ -30,7 +30,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 	//create a font object for drawing the score
 	
-	//fill "orange" list with carrot objects
 	{
 		
 	
