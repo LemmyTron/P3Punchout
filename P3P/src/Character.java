@@ -9,8 +9,10 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.net.URL;
 public class Character {
-	public int x, y; 
+	public int x, y, hp; 
 	public int hv, vv;
+	public double speed;
+	
 	
 	public double g = .001; 
 	private Image img; 	
@@ -18,12 +20,14 @@ public class Character {
 	private AffineTransform tx;
 
 	//create constructor for object
-	public Character(int x, int y) {
+	public Character(int x, int y, int health, String pers, double fastness) {
 		this.x = x;
 		this.y = y;
+		hp = health;
 		//load the character images 
-		img = getImage("testMan.png"); 
+		img = getImage(pers); 
 	
+		speed = fastness; 
 		
 		tx = AffineTransform.getTranslateInstance(x, y );
 		init(x, y); 			
@@ -49,13 +53,13 @@ public class Character {
 	
 	public void moveLeft()
 	{
-	hv -= 7.03;
+	hv -= speed;
 	}
 	
 	
 	public void moveRight()
 	{
-	hv += 7.03;
+	hv += speed;
 	}
 	
 	public void regulate()
@@ -91,7 +95,14 @@ public class Character {
 			vv=0;
 			y = 350;
 		}
-		System.out.print(vv);
+		if(x < 75)
+		{
+			x = 75;
+		}
+		if(x > 680)
+		{
+			x = 680;
+		}
 		
 	} //yu
 	

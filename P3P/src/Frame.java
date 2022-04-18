@@ -25,7 +25,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	Background 	bg 	= new Background(0, 0);
 
-	Character  character1 	= new Character(80, 300);
+	Character  character1 	= new Character(80, 300, 100, "testMan.png", 7.03);
+	Character  character2 	= new Character(650, 300, 100, "testMan.png", 7.03);
 
 	//create a font object for drawing the score
 	
@@ -40,6 +41,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//paint the background
 		bg.paint(g);
 		character1.paint(g);
+		character2.paint(g);
 		//paint all objects in the orange array
 		
 		
@@ -102,14 +104,24 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 			System.out.println(arg0.getKeyCode());
-			   if(arg0.getKeyCode() == 39) {
+			  
+			   if(arg0.getKeyCode() == 68) {
 				   character1.moveRight();
 			   }
-			   if(arg0.getKeyCode() == 38 && character1.vv == 0) {
+			   if(arg0.getKeyCode() == 87 && character1.y == 350) {
 				   character1.jump();
 			   }
-			   if(arg0.getKeyCode() == 37) {
+			   if(arg0.getKeyCode() == 65) {
 				   character1.moveLeft();
+			   }
+			   if(arg0.getKeyCode() == 39) {
+				   character2.moveRight();
+			   }
+			   if(arg0.getKeyCode() == 38 && character2.y == 350) {
+				   character2.jump();
+			   }
+			   if(arg0.getKeyCode() == 37) {
+				   character2.moveLeft();
 			   }
 
 	}
