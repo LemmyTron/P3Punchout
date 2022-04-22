@@ -4,5 +4,4 @@ public class Vyane extends Character {
 		super(x, y, 90, pers, 7.15);
 		// TODO Auto-generated constructor stub
 	}
-	
 }
