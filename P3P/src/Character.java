@@ -12,7 +12,7 @@ public class Character {
 	public int x, y, hp; 
 	public int hv, vv;
 	public double speed;
-	
+	public boolean faceRight = false;
 	
 	public double g = .001; 
 	private Image img; 	
@@ -20,7 +20,7 @@ public class Character {
 	private AffineTransform tx;
 
 	//create constructor for object
-	public Character(int x, int y, int health, String pers, double fastness) {
+	public Character(int x, int y, int health, String pers, double fastness, boolean whichWay) {
 		this.x = x;
 		this.y = y;
 		hp = health;
@@ -31,6 +31,8 @@ public class Character {
 		
 		tx = AffineTransform.getTranslateInstance(x, y );
 		init(x, y); 			
+		
+		faceRight = whichWay;
 	
 	}
 	
@@ -44,6 +46,10 @@ public class Character {
 		tx.setToTranslation(x, y);
 		tx.scale(.12, .12);
 	
+	}
+	
+	public void punch() {
+		
 	}
 	
 	public void jump()
@@ -132,6 +138,6 @@ public class Character {
 		g2.drawImage(img, tx, null);
 		
 		
-
+		
 	}
 }

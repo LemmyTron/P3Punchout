@@ -25,8 +25,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	Background 	bg 	= new Background(0, 0);
 
-	Character  character1 	= new Character(80, 300, 100, "testMan.png", 7.03);
-	Character  character2 	= new Character(650, 300, 100, "testMan.png", 7.03);
+	Character  character1 	= new Character(80, 300, 100, "testMan.png", 7.03, true);
+	Character  character2 	= new Character(650, 300, 100, "testMan.png", 7.03, false);
 
 	//create a font object for drawing the score
 	
