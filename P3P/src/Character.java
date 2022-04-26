@@ -62,6 +62,21 @@ public class Character {
 	hv -= speed;
 	}
 	
+	public void punch(Character opp, boolean rightDir, int hurtedness)
+	{
+	 	if (rightDir && opp.x > this.x && opp.x< this.x + 25)
+	 	{
+	 		opp.hp -= hurtedness;
+	 	}
+	 		
+		if (!rightDir && opp.x < this.x && opp.x> this.x - 25)
+	 	{
+	 		opp.hp -= hurtedness;
+	 	}
+		
+		System.out.println(opp.hp);
+	 		
+	}
 	
 	public void moveRight()
 	{
