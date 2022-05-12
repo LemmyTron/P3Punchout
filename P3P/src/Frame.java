@@ -114,7 +114,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   if(arg0.getKeyCode() == 65) {
 				   character1.moveLeft();
 			   }
-			   if(arg0.getKeyCode() == 100) {
+			   if(arg0.getKeyCode() == 90) {
 				   character1.punch(character2,character1.faceRight, 25);
 			   }
 			   if(arg0.getKeyCode() == 39) {
@@ -126,7 +126,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   if(arg0.getKeyCode() == 37) {
 				   character2.moveLeft();
 			   }
-			   if(arg0.getKeyCode() == 96) {
+			   if(arg0.getKeyCode() == 16) {
 				   character2.punch(character1,character2.faceRight, 25);
 			   }
 			   
