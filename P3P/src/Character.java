@@ -79,6 +79,7 @@ public class Character {
 
 	 	}
 		
+		
 		System.out.println(opp.hp);
 	 		
 	}

@@ -46,6 +46,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		
 		
+		
 	}
 	
 	public static void main(String[] arg) {
@@ -116,6 +117,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   }
 			   if(arg0.getKeyCode() == 90) {
 				   character1.punch(character2,character1.faceRight, 25);
+				   if(character2.hp == 0)
+					{
+					//	background.setImage((getImage("compLab.png")));
+					}
 			   }
 			   if(arg0.getKeyCode() == 39) {
 				   character2.moveRight();

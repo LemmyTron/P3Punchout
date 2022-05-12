@@ -51,7 +51,7 @@ public class Background{
 		tx.scale(.5, .5);
 	}
 
-	private Image getImage(String path) {
+	public Image getImage(String path) {
 		Image tempImage = null;
 		try {
 			URL imageURL = Background.class.getResource(path);
@@ -61,5 +61,8 @@ public class Background{
 		}
 		return tempImage;
 	}
-
+     
+	public void setImg(Image yuh) {
+		 img = yuh;
+	}
 }
