@@ -36,9 +36,14 @@ public class Background{
 		//call update to update the actualy picture location
 		update();
 		g2.drawImage(img, tx, null);
-		
-		
 
+	}
+	
+	public void endGame1() {
+		img = getImage("player1wins.png");
+	}
+	public void endGame2() {
+		img = getImage("player2wins.png");
 	}
 	/* update the picture variable location */
 	private void update() {
@@ -51,7 +56,7 @@ public class Background{
 		tx.scale(.5, .5);
 	}
 
-	public Image getImage(String path) {
+	public static Image getImage(String path) {
 		Image tempImage = null;
 		try {
 			URL imageURL = Background.class.getResource(path);

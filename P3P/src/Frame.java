@@ -115,13 +115,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   if(arg0.getKeyCode() == 65) {
 				   character1.moveLeft();
 			   }
-			   if(arg0.getKeyCode() == 90) {
-				   character1.punch(character2,character1.faceRight, 25);
-				   if(character2.hp == 0)
-					{
-					//	background.setImage((getImage("compLab.png")));
-					}
-			   }
+			
+			   
 			   if(arg0.getKeyCode() == 39) {
 				   character2.moveRight();
 			   }
@@ -131,9 +126,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   if(arg0.getKeyCode() == 37) {
 				   character2.moveLeft();
 			   }
-			   if(arg0.getKeyCode() == 16) {
-				   character2.punch(character1,character2.faceRight, 25);
-			   }
+			
 			   
 			   
 
@@ -141,6 +134,21 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
+		
+		   if(arg0.getKeyCode() == 90) {
+			   character1.punch(character2,character1.faceRight, 10);
+			   if(character2.hp == 0)
+				{
+				bg.endGame1();
+				}
+		   } 
+		   if(arg0.getKeyCode() == 17) {
+			   character2.punch(character1,character2.faceRight, 10);
+			   if(character1.hp == 0)
+				{
+				   bg.endGame2();
+				}
+		   }
 		// TODO Auto-generated method stub
 		//change boolean for right sprite
 	

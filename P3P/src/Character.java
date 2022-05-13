@@ -66,13 +66,13 @@ public class Character {
 	
 	public void punch(Character opp, boolean rightDir, int hurtedness)
 	{
-	 	if (rightDir && opp.x > this.x && opp.x< this.x + 50)
+	 	if (rightDir && opp.x > this.x && opp.x< this.x + 70)
 	 	{
 	 		opp.hp -= hurtedness;
 	 		System.out.println(1);
 	 	}
 	 		
-		if (!rightDir && opp.x < this.x && opp.x> this.x - 50)
+		if (!rightDir && opp.x < this.x && opp.x> this.x - 70)
 	 	{
 	 		opp.hp -= hurtedness;
 	 		System.out.println(2);
