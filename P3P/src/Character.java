@@ -36,6 +36,10 @@ public class Character {
 	
 	}
 	
+	public AffineTransform getTX() {
+		return tx;
+	}
+	
 	public void update() {
 		
 		x+=hv;
@@ -48,13 +52,9 @@ public class Character {
 	
 	}
 	
-	public void punch() {
-		
-	}
-	
 	public void jump()
 	{
-		vv -= 22; 
+		vv -= 25; 
 	}
 	
 	public void moveLeft()
@@ -93,51 +93,38 @@ public class Character {
 	
 	public void regulate()
 	{
-		if(hv > 0)
-		{
+		if(hv > 0){
 			hv-=.0001;
 		}
-		
-		if(hv < 0)
-		{
+		if(hv < 0){
 			hv+=.0001;
 		}
-		
-		
-		if(hv > 12)
-		{
+		if(hv > 12){
 			hv = 12;
 		}
-		
-		
-		if(hv < -12)
-		{
+		if(hv < -12)	{
 			hv = -12;
 		}
 		
-		if(y < 350)
-		{
+		if(y < 325){
 			vv++;
 		}
-		if(y > 350)
-		{
+		if(y > 325){
 			vv=0;
-			y = 350;
+			y = 325;
 		}
-		if(x < 75)
-		{
-			x = 75;
+		if(x < 90){
+			x = 90;
 		}
-		if(x > 680)
-		{
+		if(x > 680){
 			x = 680;
 		}
 		
-	} //yu
+	} 
 	
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
-		tx.scale(.27, .27);
+		tx.scale(.4, .4);
 	}
 
 	private Image getImage(String path) {

@@ -25,27 +25,16 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	Background 	bg 	= new Background(0, 0);
 
-	Character  character1 	= new Character(80, 300, 100, "testMan.png", 7.03, true);
-	Character  character2 	= new Character(650, 300, 100, "testMan.png", 7.03, false);
+	HennyBaby  character1 	= new HennyBaby(80, 200, true);
+	Character  character2 	= new Character(650, 200, 100, "testMan.png", 7.03, false);
 
-	//create a font object for drawing the score
 	
-	{
-		
-	
-	}
-	
-	 
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		//paint the background
 		bg.paint(g);
 		character1.paint(g);
 		character2.paint(g);
-		//paint all objects in the orange array
-		
-		
-		
 		
 	}
 	
@@ -109,7 +98,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   if(arg0.getKeyCode() == 68) {
 				   character1.moveRight();
 			   }
-			   if(arg0.getKeyCode() == 87 && character1.y == 350) {
+			   if(arg0.getKeyCode() == 87 && character1.y == 325) {
 				   character1.jump();
 			   }
 			   if(arg0.getKeyCode() == 65) {
@@ -120,7 +109,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   if(arg0.getKeyCode() == 76) {
 				   character2.moveRight();
 			   }
-			   if(arg0.getKeyCode() == 73 && character2.y == 350) {
+			   if(arg0.getKeyCode() == 73 && character2.y == 325) {
 				   character2.jump();
 			   }
 			   if(arg0.getKeyCode() == 74) {
@@ -134,14 +123,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		   if(arg0.getKeyCode() == 77) { 
+		   if(arg0.getKeyCode() == 90) { 
 			   character1.punch(character2,character1.faceRight, 10);
 			   if(character2.hp == 0)
 				{
 				bg.endGame1();
 				}
 		   } 
-		   if(arg0.getKeyCode() == 17) {
+		   if(arg0.getKeyCode() == 77) {
 			   character2.punch(character1,character2.faceRight, 10);
 			   if(character1.hp == 0)
 				{
