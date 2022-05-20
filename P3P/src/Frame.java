@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Area;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,16 +19,18 @@ import javax.swing.Timer;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-	 
-	//create a score variable
 	
-	//create a variable for the high score
+	
 	
 	Background 	bg 	= new Background(0, 0);
-
-	HennyBaby  character1 	= new HennyBaby(80, 200, true);
-	Character  character2 	= new Character(650, 200, 100, "testMan.png", 7.03, false);
-
+	Belluh  character1 	= new Belluh(80, 200, true);
+	Character  character2 	= new Character(650, 200, 100, "testMan.png", 7.03, false, .12);
+	Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 50);
+	
+	boolean gameBegin = false;
+	boolean gameOver = false;
+	double start = System.currentTimeMillis();
+	double soFar = 0;
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -36,14 +39,22 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		character1.paint(g);
 		character2.paint(g);
 		
+        soFar = (int)((System.currentTimeMillis() - start)/1000);
+		g.setFont(fnt);
+		g.setColor(new Color(0,5,0));
+		g.drawString(" " + (int)(90 - soFar) , 340, 50);
+		
+
 	}
+	
+	
 	
 	public static void main(String[] arg) {
 		Frame f = new Frame();
 	}
 	
 	public Frame() {
-		JFrame f = new JFrame("CHUNGUS");
+		JFrame f = new JFrame("P3 Punchout");
 		f.setSize(new Dimension(800, 450));
 		f.setBackground(Color.blue);
 		f.add(this);
@@ -58,9 +69,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 	}
 	
+	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-
+         
 	}
 
 	@Override
@@ -94,29 +106,39 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 			System.out.println(arg0.getKeyCode());
-			  
-			   if(arg0.getKeyCode() == 68) {
+			
+			int code = arg0.getKeyCode();
+			
+			switch (code) { 
+			
+			case 68:
 				   character1.moveRight();
-			   }
-			   if(arg0.getKeyCode() == 87 && character1.y == 325) {
-				   character1.jump();
-			   }
-			   if(arg0.getKeyCode() == 65) {
+				   break;
+			case 65:
 				   character1.moveLeft();
+				   break;
+			
+			 
+			case 76:
+				   character2.moveRight();
+				   break;
+			  
+			case 74:
+				   character2.moveLeft();
+				   break;
 			   }
 			
-			    
-			   if(arg0.getKeyCode() == 76) {
-				   character2.moveRight();
-			   }
+			
+			   
+			   
 			   if(arg0.getKeyCode() == 73 && character2.y == 325) {
 				   character2.jump();
 			   }
-			   if(arg0.getKeyCode() == 74) {
-				   character2.moveLeft();
+			   
+			   if(arg0.getKeyCode() == 87 && character1.y == 325) {
+				   character1.jump();
 			   }
 			
-			   
 			   
 
 	}

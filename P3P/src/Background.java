@@ -45,6 +45,8 @@ public class Background{
 	public void endGame2() {
 		img = getImage("player2wins.png");
 	}
+	
+	
 	/* update the picture variable location */
 	private void update() {
 		tx.setToTranslation(x - 100, y);

@@ -14,19 +14,24 @@ public class Character {
 	public double speed;
 	public boolean faceRight = false;
 	
+	private double scale;
+	
+	
 	public double g = .001; 
 	private Image img; 	
 
 	private AffineTransform tx;
 
 	//create constructor for object
-	public Character(int x, int y, int health, String pers, double fastness, boolean whichWay) {
+	public Character(int x, int y, int health, String pers, double fastness, boolean whichWay, double height) {
 		this.x = x;
 		this.y = y;
 		hp = health;
 		//load the character images 
 		img = getImage(pers); 
 	
+		scale = height;
+		
 		speed = fastness; 
 		
 		tx = AffineTransform.getTranslateInstance(x, y );
@@ -48,7 +53,7 @@ public class Character {
 		regulate();
 		
 		tx.setToTranslation(x, y);
-		tx.scale(.12, .12);
+		tx.scale(scale, scale);
 	
 	}
 	
