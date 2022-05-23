@@ -1,7 +1,7 @@
 
 public class Aak extends Character{
-	public Aak(int x, int y, int health, String pers, boolean whichWay) {
-		super(x, y, 95, pers, 7, whichWay);
+	public Aak(int x, int y, boolean whichWay) {
+		super(x, y, 95, "aakarsh.png", 7, whichWay, 0.35);
 		// TODO Auto-generated constructor stub
 	}
 

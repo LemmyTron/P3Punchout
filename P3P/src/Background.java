@@ -10,17 +10,17 @@ import java.net.URL;
 
 public class Background{
 	
-	private int x, y; //position of the bird
+	private int x, y;
 	private Image img; 	
 	private AffineTransform tx;
+	private double scale = 8;
 
 	public Background(int x, int y) {
-		img = getImage("compLab.png"); //load the image for Tree
+		img = getImage("title.png"); 
 		this.x = x;
 		this.y = y;
 		tx = AffineTransform.getTranslateInstance(x, y );
-		init(x, y); 				//initialize the location of the image
-									//use your variables
+		init(x, y); 				
 	}
 	
 	public void changePicture(String newFileName) {
@@ -38,6 +38,22 @@ public class Background{
 		g2.drawImage(img, tx, null);
 
 	}
+	public void setX(int val) {
+		x = val;
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public void setScale(double val) {
+		scale = val;
+	}
+	
+	public void compLab() {
+		img = getImage("compLab.png");
+		setScale(9.5);	
+	}
 	
 	public void endGame1() {
 		img = getImage("player1wins.png");
@@ -46,11 +62,9 @@ public class Background{
 		img = getImage("player2wins.png");
 	}
 	
-	
-	/* update the picture variable location */
 	private void update() {
-		tx.setToTranslation(x - 100, y);
-		tx.scale(9.5, 9.5);
+		tx.setToTranslation(x, y);
+		tx.scale(scale, scale);
 	}
 	
 	private void init(double a, double b) {
