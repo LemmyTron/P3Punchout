@@ -12,8 +12,7 @@ public class Object {
 		private Image img; 	
 		private int vx =-2;
 		private AffineTransform tx;
-		public Object reset;
-		
+		public Object resetObject;
 
 		public Object(int x, int y) {
 			this.x = x;
