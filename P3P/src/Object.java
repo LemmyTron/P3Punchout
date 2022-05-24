@@ -20,7 +20,7 @@ public class Object {
 		//set boolean true, if true paint 
 		private boolean paintObj;
 		
-
+  
 		
 		
 		//set image method to change for diff characters
