@@ -8,20 +8,23 @@ import java.net.URL;
 public class Object {
 	//add location attributes
 		public int x, y; //position
-		public int w = 115, h = 175;
 		private Image img; 	
-		private int vx =-2;
+		protected int vx;
+		protected int vy;
 		private AffineTransform tx;
 		public Object resetObject;
-
-		public Object(int x, int y) {
+		public boolean throwRight = false; 
+		public double g = .001; 
+		
+		
+		public Object(int x, int y, String pers, boolean whichWay) {
 			this.x = x;
 			this.y = y;
-			img = getImage("/imgs/bitcoin.png"); //load the image for Tree
-
+			img = getImage(pers); //load the image for Tree
+			
 			tx = AffineTransform.getTranslateInstance(x, y );
-			init(x, y); 				//initialize the location of the image
-										//use your variables
+			init(x, y); //initialize the location of the image //use your variables
+			throwRight = whichWay; 
 		}   
 		
 		public void changePicture(String newFileName) {
@@ -33,7 +36,7 @@ public class Object {
 			//these are the 2 lines of code needed draw an image on the screen
 			Graphics2D g2 = (Graphics2D) g;
 
-			//call update to update the actualy picture location
+			//call update to update the actually picture location
 			update();
 			g2.drawImage(img, tx, null);
 			//g.drawRect(x, y, w, h); 
@@ -43,6 +46,8 @@ public class Object {
 		/* update the picture variable location */
 		private void update() {
 			x+= vx; //velocity in y affects y location
+			y+= vy;
+			vy+= g;
 			
 
 			//prevent bird from leaving at the top of the frame - similar to the limit you added to pong paddles
@@ -55,7 +60,7 @@ public class Object {
 				//vy=0;
 			//}
 			tx.setToTranslation(x, y);
-			tx.scale(.4	, .4);
+			tx.scale(scale	, scale);
 			
 		}
 		
@@ -86,8 +91,10 @@ public class Object {
 			}
 			return tempImage;
 		}
+		public void setImg(Image image) {
+			img = image; 
+		}
 
-	}
-
+}
 
 
