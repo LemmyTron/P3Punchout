@@ -52,14 +52,16 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		//paint the background
-		
 		bg.paint(g);
+		
 		
 		if (gameBegin && !gameOver)
 		{
 		bg.compLab();
 		character1.paint(g);
 		character2.paint(g);
+		
+		//if __ is true, paint this
 		
         soFar = (int)((System.currentTimeMillis() - start)/1000);
 		g.setFont(fnt);
@@ -151,7 +153,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				   character2.moveLeft();
 				   break;
 			   }
-			
 			   
 			   if(arg0.getKeyCode() == 73 && character2.y == 325) {
 				   character2.jump();

@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
@@ -15,18 +16,29 @@ public class Object {
 		public Object resetObject;
 		public boolean throwRight = false; 
 		public double g = .001; 
+		//boolean for paint
+		//set boolean true, if true paint 
+		private boolean paintObj;
+		
+
 		
 		
-		public Object(int x, int y, String pers, boolean whichWay) {
+		//set image method to change for diff characters
+		
+		public Object(int x, int y, String image, boolean whichWay, double velocity) {
 			this.x = x;
 			this.y = y;
-			img = getImage(pers); //load the image for Tree
+			img = getImage(image); //load the image for Tree
 			
 			tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); //initialize the location of the image //use your variables
 			throwRight = whichWay; 
 		}   
 		
+		public Object() {
+			// TODO Auto-generated constructor stub
+		}
+
 		public void changePicture(String newFileName) {
 			img = getImage(newFileName);
 			init(x, y);
@@ -59,7 +71,9 @@ public class Object {
 				//y=510;
 				//vy=0;
 			//}
+			
 			tx.setToTranslation(x, y);
+			double scale = 0; //new
 			tx.scale(scale	, scale);
 			
 		}
@@ -68,14 +82,7 @@ public class Object {
 			x = 380;
 			vx = -2;
 		}
-		//public void flap() {
-			//what's the intent if we command the bird to fly?
-			//vy -= 15;
-		//}
-		//public void reset() {
-			//y=200;
-		//	vy=0;
-		//}
+		
 		private void init(double a, double b) {
 			tx.setToTranslation(a, b);
 			tx.scale(.5, .5);
@@ -94,7 +101,21 @@ public class Object {
 		public void setImg(Image image) {
 			img = image; 
 		}
+		//new
 
-}
+		public void paint1(Graphics g2) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public boolean isPaintObj() {
+			return paintObj;
+		}
+
+		public void setPaintObj(boolean paintObj) {
+			this.paintObj = paintObj;
+		}
+
+} 
 
 

@@ -1,0 +1,7 @@
+
+public class Plant extends Object{
+	public Plant (int x, int y, String image, boolean whichWay, double velocity){
+		super(x, y, "plant.png", whichWay, velocity);
+		// TODO Auto-generated constructor stub
+	}
+}

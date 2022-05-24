@@ -13,6 +13,10 @@ public class Character {
 	public int hv, vv;
 	public double speed;
 	public boolean faceRight = false;
+	private Object bitcoin;
+	private Object fgrade;
+	private Object musicnotes;
+	public Object getObject; 
 	
 	private double scale;
 	
@@ -21,6 +25,7 @@ public class Character {
 	private Image img; 	
 
 	private AffineTransform tx;
+	private Object plant;
 
 	//create constructor for object
 	public Character(int x, int y, int health, String pers, double fastness, boolean whichWay, double height) {
@@ -38,6 +43,13 @@ public class Character {
 		init(x, y); 			
 		
 		faceRight = whichWay;
+		
+		Object Bitcoin = new Object(); 
+		Object FGrade = new Object();
+		Object MusicNotes = new Object();
+		Object Plant = new Object();
+		Object Rocket = new Object();
+		Object TennisBall = new Object();
 	
 	}
 	
@@ -88,6 +100,8 @@ public class Character {
 		System.out.println(opp.hp);
 	 		
 	}
+	
+	
 	
 	public void moveRight()
 	{
@@ -154,5 +168,37 @@ public class Character {
 		
 		
 		
+	}
+
+	public Object getFgrade() {
+		return fgrade;
+	}
+
+	public void setFgrade(Object fgrade) {
+		this.fgrade = fgrade;
+	}
+
+	public Object getBitcoin() {
+		return bitcoin;
+	}
+
+	public void setBitcoin(Object bitcoin) {
+		this.bitcoin = bitcoin;
+	}
+
+	public Object getMusicnotes() {
+		return musicnotes;
+	}
+
+	public void setMusicnotes(Object musicnotes) {
+		this.musicnotes = musicnotes;
+	}
+
+	public Object getPlant() {
+		return getPlant();
+	}
+
+	public void setPlant(Object plant) {
+		this.plant = plant;
 	}
 }
