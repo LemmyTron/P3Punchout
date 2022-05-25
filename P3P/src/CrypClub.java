@@ -5,7 +5,14 @@ public class CrypClub extends Character{
 		// TODO Auto-generated constructor stub
 	//}
 	
-public void throwIt() {
+	public void throwIt() {
 		//if the obj intersects w the box
 	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+
 }

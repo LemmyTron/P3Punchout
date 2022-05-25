@@ -4,5 +4,11 @@ public class Belluh extends Character{
 		super(x, y, 60, "bella.png", 8, whichWay, 0.31);
 		// TODO Auto-generated constructor stub
 	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
 	
 }

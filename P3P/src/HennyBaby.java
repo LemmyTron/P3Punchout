@@ -17,4 +17,10 @@ public class HennyBaby extends Character{
 		getTX().scale(.35, .35);
 	
 	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
 }
