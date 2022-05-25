@@ -11,9 +11,12 @@ public class Bitcoin extends Object{
 		y +=vy;
 		vy +=g;
 		
-	
 	}
 	
+	public void appear(CrypClub b) {
+		this.x= b.getX();
+		
+	}
 	//if crypto faces right && throw key clicked, call bitcoin projectile
 	//if jump, projectile goes where
 	

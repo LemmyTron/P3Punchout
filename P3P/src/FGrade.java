@@ -4,4 +4,8 @@ public class FGrade extends Object{
 		super(x, y, "FGrade.png", whichWay, velocity);
 		// TODO Auto-generated constructor stub
 	}
+	public void appear(MD b) {
+		this.x= b.getX();
+		
+	}
 }

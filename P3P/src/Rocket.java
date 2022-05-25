@@ -4,4 +4,8 @@ public class Rocket extends Object{
 		super(x, y, "rocket.png", whichWay, velocity);
 		// TODO Auto-generated constructor stub
 	}
+	public void appear(Aak b) {
+		this.x= b.getX();
+		
+	}
 }

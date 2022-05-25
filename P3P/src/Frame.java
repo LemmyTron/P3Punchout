@@ -137,28 +137,36 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			
 			switch (code) { 
 			
-			case 68:
+			case 68: //character d
 				   character1.moveRight();
 				   break;
-			case 65:
+			case 65: //letter a
 				   character1.moveLeft();
 				   break;
 			
 			 
-			case 76:
+			case 76: //letter l
 				   character2.moveRight();
 				   break;
 			  
-			case 74:
+			case 74: //letter j
 				   character2.moveLeft();
 				   break;
+				   
+			//case 78: //letter n
+				//Object.paint(); 
+				//break;
+				
+			//case 88:
+				//break; 
+			 
 			   }
 			   
-			   if(arg0.getKeyCode() == 73 && character2.y == 325) {
+			   if(arg0.getKeyCode() == 73 && character2.y == 325) { //letter m
 				   character2.jump();
 			   }
 			   
-			   if(arg0.getKeyCode() == 87 && character1.y == 325) {
+			   if(arg0.getKeyCode() == 87 && character1.y == 325) { //letter w
 				   character1.jump();
 			   }
 	}

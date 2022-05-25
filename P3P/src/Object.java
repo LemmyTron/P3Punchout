@@ -78,6 +78,8 @@ public class Object {
 			
 		}
 		
+	
+		
 		public void reset() {
 			x = 380;
 			vx = -2;

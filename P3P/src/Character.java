@@ -17,8 +17,8 @@ public class Character {
 	private Object fgrade;
 	private Object musicnotes;
 	public Object getObject; 
-	
 	private double scale;
+	public boolean punchSprite = false; 
 	
 	
 	public double g = .001; 
@@ -68,6 +68,7 @@ public class Character {
 		tx.scale(scale, scale);
 	
 	}
+	
 	
 	public void jump()
 	{
@@ -165,6 +166,16 @@ public class Character {
 		//call update to update the actualy picture location
 		update();
 		g2.drawImage(img, tx, null);
+		
+		
+		if(punchSprite == false) {
+			//tx.scale(1,  1);
+			g2.drawImage(img,  tx, null);
+		}
+		else {
+			//tx.scale(1, 1)
+			g2.drawImage(img, tx, null); //need to change img to the punch image
+		}
 		
 		
 		
