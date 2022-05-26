@@ -9,10 +9,14 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.net.URL;
 public class Character {
+	private static int index = 0;
 	public int x, y, hp; 
 	public int hv, vv;
 	public double speed;
+	public boolean noPhysics = false;
 	public boolean faceRight = false;
+	public boolean p1 = false;
+	
 	private Object bitcoin;
 	private Object fgrade;
 	private Object musicnotes;
@@ -44,12 +48,7 @@ public class Character {
 		
 		faceRight = whichWay;
 		
-		Object Bitcoin = new Object(); 
-		Object FGrade = new Object();
-		Object MusicNotes = new Object();
-		Object Plant = new Object();
-		Object Rocket = new Object();
-		Object TennisBall = new Object();
+	
 	
 	}
 	
@@ -57,16 +56,73 @@ public class Character {
 		return tx;
 	}
 	
+
 	public void update() {
 		
 		x+=hv;
 		y+=vv;
 		vv+=g;
+		
+		if(!noPhysics){
 		regulate();
+		}
 		
 		tx.setToTranslation(x, y);
 		tx.scale(scale, scale);
 	
+	}
+	public void inc() {
+		index++;
+		if(getDex() == 6){
+			setDex(0);
+		}
+			
+	}
+	public void dec() {
+		index--;
+		if(getDex() == -1){
+			setDex(5);
+		}
+			
+	}
+	
+	public Character whoIsYou(int num, int x, int y, boolean whichWay ){
+		switch(num) {
+			case 0:
+			{
+				return new HennyBaby(x, y, whichWay);
+			}
+			case 1:
+			{
+				return new Belluh(x, y, whichWay);
+			}
+			case 2:
+			{
+				return new MD(x, y, whichWay);
+			}
+			case 3:
+			{
+				return new Aak(x, y, whichWay);
+			}
+			case 4:
+			{
+				return new Vyane(x, y, whichWay);
+			}
+			case 5:
+			{
+				return new CrypClub(x, y, whichWay);
+			}
+		}
+		return null;
+		
+	}
+	
+	public void setDex(int give) {
+		index = give ;
+	}
+	
+	public static int getDex() {
+		return index;
 	}
 	
 	
@@ -96,6 +152,7 @@ public class Character {
 	 		System.out.println(2);
 
 	 	}
+		
 		
 		
 		System.out.println(opp.hp);
@@ -138,14 +195,44 @@ public class Character {
 		}
 		if(x > 680){
 			x = 680;
-		}
-		
+		}	
 	} 
+	
+	public void preview(){
+	
+		switch(index) {	
+		case 0:
+			img = getImage("henrystand.png");
+			scale = 1.5;
+			break;
+		case 1:
+			img = getImage("bella.png");
+			break;
+		case 2:
+			img = getImage("mrdavid.png");			
+			break;
+		case 3:
+			img = getImage("aakarsh.png");
+			break;
+		case 4:
+			img = getImage("vianneguitar.png");
+			scale = 1.5;
+			break;
+		case 5:
+			img = getImage("crypto.png");
+			scale = .5;
+			break;
+		
+		
+		}
+	}
 	
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
-		tx.scale(.4, .4);
+		tx.scale(.85, .85);
 	}
+
+	
 
 	private Image getImage(String path) {
 		Image tempImage = null;

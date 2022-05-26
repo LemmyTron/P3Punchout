@@ -1,10 +1,9 @@
 
 public class CrypClub extends Character{
-	public CrypClub(int x, int y, int health, String pers, boolean whichWay) {
-		super(x, y, 130, pers, 6.9, whichWay, 0.35);
-		// TODO Auto-generated constructor stub
+	public CrypClub(int x, int y, boolean whichWay) {
+		super(x, y, 130, "crypto.png", 6.9, whichWay, 0.20);
+		
 	}
-	
 	public void throwIt() {
 		//if the obj intersects w the box
 	}

@@ -24,9 +24,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Background 	bg 	= new Background(0, 0);
 	Vyane character1 	= new Vyane(80, 200, true);
 	Character  character2 	= new Character(650, 200, 100, "testMan.png", 7.03, false, .12);
+	Character  preview 	= new Character(320, 150, 100, "henrystand.png", 7.03, true, 1.5);
 	Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 50);
 	
-	boolean selected = false;
+	public boolean selectTime = false;
 	boolean gameBegin = false;
 	boolean gameOver = false;
 	double start = 0;
@@ -38,21 +39,58 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean david = false;
 	boolean aak = false;
 	boolean vianne = false;
-	boolean cryp = false; {
-
+	boolean cryp = false; 
+		
+	{
 	picked[0] = henry;
 	picked[1] = bella;
 	picked[2] = david;
 	picked[3] = aak;
 	picked[4] = vianne;
 	picked[5] = cryp;
-	
 	}
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		//paint the background
-		bg.paint(g);
+		g.setColor(new Color(255,255,255));
+		if(selectTime && !gameBegin)
+		{
+			bg.paint(g);
+			g.fillRect(320, 150, 150, 160);
+			g.drawRect(310, 350, 220, 60);
+			preview.paint(g);
+			preview.preview();
+			Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 20);
+			
+			g.setFont(fnt);
+			
+			switch(preview.getDex()) {	
+			
+			case 0:
+				g.drawString("HennyBaby" , 340, 335);
+				break;
+			case 1:
+				g.drawString("Bella" , 340, 335);
+				break;
+			case 2:
+				g.drawString("Mr. David" , 340, 335);
+				break;
+			case 3:
+				g.drawString("Aak" , 340, 335);
+				break;
+			case 4:
+				g.drawString("Vianne" , 340, 335);
+				break;
+			case 5:
+				g.drawString("CrypClub", 340, 335);
+				break;
+			
+			
+			}
+
+		}
+
 		
 		
 		if (gameBegin && !gameOver)
@@ -64,16 +102,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//if __ is true, paint this
 		
         soFar = (int)((System.currentTimeMillis() - start)/1000);
-		g.setFont(fnt);
+		
 		g.setColor(new Color(0,5,0));
 		g.drawString(" " + (int)(95 - soFar) , 340, 50);
 		}
 		
 
 	}
-	
-	
-	
+
 	public static void main(String[] arg) {
 		Frame f = new Frame();
 	}
@@ -97,7 +133,31 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-         
+		if(!selectTime)
+		{bg.select();
+		selectTime = true;
+		preview.noPhysics = true;
+		}
+		
+		if(selectTime&& arg0.getX() >=20 && arg0.getX()<= 180) {
+			if(arg0.getY()>=180 && arg0.getY() <= 280) {
+				preview.dec();
+			}
+		}
+		if(selectTime &&arg0.getX() >=630 && arg0.getX()<= 790) {
+			if(arg0.getY()>=180 && arg0.getY() <= 280) {
+				preview.inc();
+				System.out.println("yuh");
+				
+			}
+		}
+		if(selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
+			if(arg0.getY()>=350 && arg0.getY() <= 410) {
+				picked[preview.getDex()] = true;
+				
+			}
+		}
+		
 	}
 
 	@Override
@@ -112,9 +172,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		gameBegin = true;
-		bg.compLab();
-		bg.setX(bg.getX() - 100);
 	
 	}
 
@@ -139,6 +196,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			
 			case 68: //character d
 				   character1.moveRight();
+				   preview.inc();
+				   System.out.println(preview.getDex());
 				   break;
 			case 65: //letter a
 				   character1.moveLeft();
@@ -170,6 +229,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				   character1.jump();
 			   }
 	}
+
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		   if(arg0.getKeyCode() == 90) { 
@@ -197,4 +257,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 	}
 
+	public boolean getSelectTime() {
+		return selectTime;
+	}
+	
+	
 }

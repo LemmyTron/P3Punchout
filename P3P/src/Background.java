@@ -55,6 +55,11 @@ public class Background{
 		setScale(9.5);	
 	}
 	
+	public void select() {
+		img = getImage("chooseyourcharacter.png");
+		setScale(1.142);	
+	}
+	
 	public void endGame1() {
 		img = getImage("player1wins.png");
 	}
@@ -83,7 +88,5 @@ public class Background{
 		return tempImage;
 	}
      
-	public void setImg(Image yuh) {
-		 img = yuh;
-	}
+
 }

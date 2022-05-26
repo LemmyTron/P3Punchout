@@ -6,17 +6,7 @@ public class HennyBaby extends Character{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void update() {
-		
-		x+=hv;
-		y+=vv;
-		vv+=g;
-		regulate();
-		
-		getTX().setToTranslation(x, y);
-		getTX().scale(.35, .35);
 	
-	}
 	public int getX() {
 		return x;
 	}
