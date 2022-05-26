@@ -13,6 +13,8 @@ public class Bitcoin extends Object{
 		
 	}
 	
+	//boom shakalaka
+	
 	public void appear(CrypClub b) {
 		this.x= b.getX();
 		
