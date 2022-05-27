@@ -212,11 +212,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				   character2.moveLeft();
 				   break;
 				   
-			//case 78: //letter n
-				//Object.paint(); 
-				//break;
+			case 78: //letter n
+				Object.paint(); 
+				break;
 				
-			//case 88:
+			case 88:
 				//break; 
 			 
 			   }
@@ -259,6 +259,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 	public boolean getSelectTime() {
 		return selectTime;
+	}
+	public Vyane getCharacter1() {
+		return character1;
+	}
+	public Character getCharacter2() {
+		return character2; 
 	}
 	
 	
