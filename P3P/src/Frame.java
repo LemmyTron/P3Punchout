@@ -215,10 +215,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			case 78: //letter n
 				Object.paint(); 
 				break;
+			//if 78 key is pressed, paint the character2's object
+				//also need to throw that object
 				
-			case 88:
+			//case 88:
 				//break; 
-			 
+				//if 78 key is pressed, paint the character1's object
+				//also need to throw that object
 			   }
 			   
 			   if(arg0.getKeyCode() == 73 && character2.y == 325) { //letter m
