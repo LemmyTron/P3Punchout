@@ -22,7 +22,7 @@ public class Background{
 	private Image img; 	
 	private AffineTransform tx;
 	
-	//test
+	//test stuff
 	private double scale = 8;
 	public boolean selectTime = false;
 	public boolean gameBegin = false;
