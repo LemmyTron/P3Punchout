@@ -1,9 +1,11 @@
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
+import java.util.ArrayList;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,53 +20,54 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
+
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-	
+	//declare and instantiate background
 	Background 	bg 	= new Background(0, 0);
-	Vyane character1 	= new Vyane(80, 200, true);
-	Character  character2 	= new Character(650, 200, 100, "testMan.png", 7.03, false, .12);
+	//declare and initialize characters with null vals
+	//to fill later during selection
+	Character character1 	= null;
+	Character  character2 	= null;
+	//declare character for selection display
 	Character  preview 	= new Character(320, 150, 100, "henrystand.png", 7.03, true, 1.5);
-	Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 50);
 	
-	public boolean selectTime = false;
-	boolean gameBegin = false;
-	boolean gameOver = false;
-	double start = 0;
-	double soFar = 0;
+	//initialize variables for keeping track of time
+	double start;
+	double soFar;
 	
-	boolean[] picked = new boolean[6];
-	boolean henry = false;
-	boolean bella = false;
-	boolean david = false;
-	boolean aak = false;
-	boolean vianne = false;
-	boolean cryp = false; 
-		
-	{
-	picked[0] = henry;
-	picked[1] = bella;
-	picked[2] = david;
-	picked[3] = aak;
-	picked[4] = vianne;
-	picked[5] = cryp;
-	}
-	
+
 	public void paint(Graphics g) {
+		//paint
 		super.paintComponent(g);
-		//paint the background
-		g.setColor(new Color(255,255,255));
-		if(selectTime && !gameBegin)
+		
+		//paint background
+		bg.paint(g);
+		
+		//paint screens and its instructions using
+		//booleans to check progression
+		//starting w/ title
+		if (!bg.selectTime)
 		{
-			bg.paint(g);
+			//create instructions on title screen
+			g.setColor(new Color(0,0,0));
+			g.drawString("Press Space To Join the Punchout" , 310, 280);
+		}
+		//paint selection screen
+		if(bg.selectTime && !bg.gameBegin)
+		{
+			//create aesthetic rectangle behind preview
+			g.setColor(new Color(255,255,255));
 			g.fillRect(320, 150, 150, 160);
-			g.drawRect(310, 350, 220, 60);
+			//paint the preview character
 			preview.paint(g);
+			//call method allowing for "cycling"
+			//between characters using a switch statement
 			preview.preview();
+			//draw character names on screen using
+			//a switch statement
 			Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 20);
-			
 			g.setFont(fnt);
-			
 			switch(preview.getDex()) {	
 			
 			case 0:
@@ -85,26 +88,28 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			case 5:
 				g.drawString("CrypClub", 340, 335);
 				break;
-			
-			
 			}
 
 		}
-
-		
-		
-		if (gameBegin && !gameOver)
+		//paint the main fighting screenwhen triggered
+		if (bg.gameBegin && !bg.gameOver)
 		{
+		//call method to change background
 		bg.compLab();
+		//paint characters
 		character1.paint(g);
 		character2.paint(g);
-		
-		//if __ is true, paint this
-		
-        soFar = (int)((System.currentTimeMillis() - start)/1000);
-		
+		//call time managment method
+		//and draw the timer using the vars
+		manageTime();
+		Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 50);
 		g.setColor(new Color(0,5,0));
 		g.drawString(" " + (int)(95 - soFar) , 340, 50);
+		}
+		
+		//paint the appropriate Game Over screen
+		if(bg.gameOver) {
+			bg.paint(g);
 		}
 		
 
@@ -133,27 +138,36 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		if(!selectTime)
-		{bg.select();
-		selectTime = true;
-		preview.noPhysics = true;
-		}
 		
-		if(selectTime&& arg0.getX() >=20 && arg0.getX()<= 180) {
+		if(bg.selectTime&& arg0.getX() >=20 && arg0.getX()<= 180) {
 			if(arg0.getY()>=180 && arg0.getY() <= 280) {
 				preview.dec();
 			}
 		}
-		if(selectTime &&arg0.getX() >=630 && arg0.getX()<= 790) {
+		if(bg.selectTime &&arg0.getX() >=630 && arg0.getX()<= 790) {
 			if(arg0.getY()>=180 && arg0.getY() <= 280) {
-				preview.inc();
-				System.out.println("yuh");
-				
+				preview.inc();				
 			}
 		}
-		if(selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
+		if(bg.selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
 			if(arg0.getY()>=350 && arg0.getY() <= 410) {
-				picked[preview.getDex()] = true;
+				System.out.println(preview.picked());
+				System.out.println(preview.getDex());
+
+				if(preview.picked() == -1)
+				{
+				 character1 = preview.whoIsYou(preview.getDex(),80,200,true);
+			    	preview.picked[preview.getDex()] = true;
+				System.out.println("yassssss");
+				}
+				else if (preview.picked()!= preview.getDex()) {
+				 character2 = preview.whoIsYou(preview.getDex(),650,200,true);
+					System.out.println("oink");
+					bg.gameBegin = true;
+					bg.setX(getX() - 100);
+					startTimer();
+				}
+				
 				
 			}
 		}
@@ -187,9 +201,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-			System.out.println(arg0.getKeyCode());
+		// TODO Auto-generated method stub			
 			
+			//use switch statement and int
+			//to collect the keycode being used
+			//and move accordingly
 			int code = arg0.getKeyCode();
 			
 			switch (code) { 
@@ -219,8 +235,18 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			//case 88:
 				//break; 
 			 
+			   }  
+			   //start selection sequence when
+			   // when the spacebar is first pressed
+			   //using booleans and an if-statement
+			   if(arg0.getKeyCode() == 32 && !bg.selectTime) { //letter w
+				   	//call screen change method, change bool accordingly
+				    bg.select();
+					bg.selectTime = true;
+					//turn established physics off for preview
+					preview.noPhysics = true;
 			   }
-			   
+			
 			   if(arg0.getKeyCode() == 73 && character2.y == 325) { //letter m
 				   character2.jump();
 			   }
@@ -228,22 +254,29 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   if(arg0.getKeyCode() == 87 && character1.y == 325) { //letter w
 				   character1.jump();
 			   }
+			   
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		   if(arg0.getKeyCode() == 90) { 
+		//use an int w/ key code detection and such
+		//to call punch methods accordingly
+		//and end game when necessary
+		int p = arg0.getKeyCode();
+		switch(p) {
+		case 90:
 			   character1.punch(character2,character1.faceRight, 10);
-			   if(character2.hp == 0)
+			   if(character2.hp <= 0)
 				{
-				bg.endGame1();
+		        bg.end(character1, character2);	 
 				}
-		   } 
-		   if(arg0.getKeyCode() == 77) {
+			   break;
+
+		case 77:
 			   character2.punch(character1,character2.faceRight, 10);
-			   if(character1.hp == 0)
+			   if(character1.hp <= 0)
 				{
-				bg.endGame2();
+		        bg.end(character1, character2);
 				}
 		   }
 		// TODO Auto-generated method stub
@@ -251,15 +284,29 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	}
 
+	//declare timer start method
+	public void startTimer() {
+		start = System.currentTimeMillis();
+	}
+	//declare timer managment method
+	public void manageTime() {
+		//calculate the time elapsed in seconds
+        soFar = (int)((System.currentTimeMillis() - start)/1000);
+        //use if-statement to end game if
+        //timer reaches 0
+        if(90 - soFar == 0)
+        {
+        	bg.end(character1, character2);
+        }
+	}
+	
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public boolean getSelectTime() {
-		return selectTime;
-	}
+	
 	
 	
 }

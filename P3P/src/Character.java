@@ -17,14 +17,35 @@ public class Character {
 	public boolean faceRight = false;
 	public boolean p1 = false;
 	
+	
 	private Object bitcoin;
 	private Object fgrade;
 	private Object musicnotes;
 	public Object getObject; 
-	private double scale;
 	public boolean punchSprite = false; 
 	
+	//declare scale variable for character sizes
+	private double scale;
 	
+	//initialize and fill array with values to organize character selections
+	boolean[] picked = new boolean[6];
+	boolean henry = false;
+	boolean bella = false;
+	boolean david = false;
+	boolean aak = false;
+	boolean vianne = false;
+	boolean cryp = false; 
+	{
+	picked[0] = henry;
+	picked[1] = bella;
+	picked[2] = david;
+	picked[3] = aak;
+	picked[4] = vianne;
+	picked[5] = cryp;
+	}
+	
+	
+	//add gravity variable
 	public double g = .001; 
 	private Image img; 	
 
@@ -124,6 +145,16 @@ public class Character {
 	public static int getDex() {
 		return index;
 	}
+	
+	public int picked() {
+		for(int i = 0; i < 6; i++) {
+			if(picked[i]) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
 	
 	
 	public void jump()
@@ -226,6 +257,8 @@ public class Character {
 		
 		}
 	}
+	
+	
 	
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
