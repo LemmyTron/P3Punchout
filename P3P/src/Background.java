@@ -75,13 +75,12 @@ public class Background{
 		gameOver = true;
 		if (uno.hp > dos.hp || uno.hp == dos.hp) {
 			endGame1();
-			unreadW = "Player 1";
+			congratulate("Player 1");
 		}
 		else {
 			endGame2();
-			unreadW = "Player 2";
+			congratulate("Player 2");
 		}
-		giveWinner = true;
 
 	}
 	
@@ -97,10 +96,10 @@ public class Background{
 		img = getImage("player2wins.png");
 	}
 	
-	public void congratulations(String winner) {
+	public void congratulate(String winner) {
 		try {
 		      FileWriter myWriter = new FileWriter("filename.txt");
-		      myWriter.write(unreadW);
+		      myWriter.write(winner);
 		      myWriter.close();
 		      System.out.println("Successfully wrote to the file.");
 		    } catch (IOException e) {
@@ -108,7 +107,7 @@ public class Background{
 		      e.printStackTrace();
 		    }
 		try {
-		      File myObj = new File("filename.txt");
+		      File myObj = new File("whoWon.txt");
 		      Scanner myReader = new Scanner(myObj);
 		      while (myReader.hasNextLine()) {
 		       readW = myReader.nextLine();
