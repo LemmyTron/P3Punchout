@@ -23,6 +23,8 @@ public class Character {
 	public Object getObject; 
 	private double scale;
 	public boolean punchSprite = false; 
+	//new
+	private Image punchedImg; 
 	
 	
 	public double g = .001; 
@@ -259,10 +261,10 @@ public class Character {
 			//tx.scale(1,  1);
 			g2.drawImage(img,  tx, null);
 		}
-		//else if(getCharacter1 == HennyBaby){
+		else if(punchSprite == true){
 			//tx.scale(1, 1)
-			//g2.drawImage("testMan.img", tx, null); //need to change img to the punch image
-		//}
+			g2.drawImage(punchedImg, tx, null); //need to change img to the punch image
+		}
 		
 		
 		
