@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import java.awt.Graphics2D;
@@ -18,7 +19,6 @@ import java.io.IOException;  // Import the IOException class to handle errors
 public class Background{
 	
 	private int x, y;
-	ArrayList<String> winners = new ArrayList<String>(); 
 	private Image img; 	
 	private AffineTransform tx;
 	
@@ -27,7 +27,8 @@ public class Background{
 	public boolean selectTime = false;
 	public boolean gameBegin = false;
 	public boolean gameOver = false;
-	public boolean giveWinner = true;
+	public String unreadW = null;
+	public String readW = null;
 
 
 	public Background(int x, int y) {
@@ -51,9 +52,6 @@ public class Background{
 		//call update to update the actually picture location
 		update();
 		g2.drawImage(img, tx, null);
-		if (giveWinner) {
-			g.drawString("wheiwgeygyuqwegfygqwyeufguyqwgef", 100, 100);
-		}
 		
 	}
 	public void setX(int val) {
@@ -77,10 +75,14 @@ public class Background{
 		gameOver = true;
 		if (uno.hp > dos.hp || uno.hp == dos.hp) {
 			endGame1();
+			unreadW = "Player 1";
 		}
 		else {
 			endGame2();
+			unreadW = "Player 2";
 		}
+		giveWinner = true;
+
 	}
 	
 	public void select() {
@@ -98,7 +100,7 @@ public class Background{
 	public void congratulations(String winner) {
 		try {
 		      FileWriter myWriter = new FileWriter("filename.txt");
-		      myWriter.write("Files in Java might be tricky, but it is fun enough!");
+		      myWriter.write(unreadW);
 		      myWriter.close();
 		      System.out.println("Successfully wrote to the file.");
 		    } catch (IOException e) {
@@ -109,7 +111,7 @@ public class Background{
 		      File myObj = new File("filename.txt");
 		      Scanner myReader = new Scanner(myObj);
 		      while (myReader.hasNextLine()) {
-		       String data = myReader.nextLine();
+		       readW = myReader.nextLine();
 		      }
 		      myReader.close();
 		    } catch (FileNotFoundException e) {
