@@ -26,5 +26,6 @@ For support, reach out to Bella for ... and Henry for ... We do not plan on acti
 All objects, sprites, and backgroundswere created by Bella on PixilArt with inspiration from our class. Thanks to everyone who helped contribute to the success of our game!
 
 ## THANK YOU!
-### -bella santos and henry lemersal :)
+### sincerely, bella santos and henry lemersal :) #yassification #girlBosses #compSciQueens
+
 insert images of us below!!
