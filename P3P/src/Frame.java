@@ -231,10 +231,17 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				   character2.moveLeft();
 				   break;
 				   
-			//case 78: //letter n
-				//Object.paint(); 
-				//break;
+			case 78: //letter n
+				character2.punchSprite = true; 
+				break; 
 				
+			case 88:
+				character1.punchSprite = true;
+				break;
+			//if 78 key is pressed, paint the character2's object
+				//also need to throw that object
+				
+
 			//case 88:
 				//break; 
 			 
@@ -248,6 +255,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 					bg.selectTime = true;
 					//turn established physics off for preview
 					preview.noPhysics = true;
+	
 			   }
 			
 			   if(arg0.getKeyCode() == 73 && character2.y == 325) { //letter m
@@ -282,6 +290,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		        bg.end(character1, character2);
 				}
 		   }
+		   if(arg0.getKeyCode() == 78) {
+			   character2.punchSprite = true; 
+		 
+		   }
+		   if(arg0.getKeyCode() == 88) {
+			   character2.punchSprite = true; 
+		   }
+		   
 		// TODO Auto-generated method stub
 		//change boolean for right sprite
 	
@@ -309,7 +325,5 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 	}
 
-	
-	
 	
 }

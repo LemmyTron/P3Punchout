@@ -23,6 +23,8 @@ public class Character {
 	private Object musicnotes;
 	public Object getObject; 
 	public boolean punchSprite = false; 
+	//new
+	private Image punchedImg; 
 	
 	//declare scale variable for character sizes
 	private double scale;
@@ -288,14 +290,37 @@ public class Character {
 		g2.drawImage(img, tx, null);
 		
 		
-		if(punchSprite == false) {
+		/*if(punchSprite == false) {
 			//tx.scale(1,  1);
 			g2.drawImage(img,  tx, null);
 		}
-		else {
+		else{
 			//tx.scale(1, 1)
-			g2.drawImage(img, tx, null); //need to change img to the punch image
-		}
+			switch(index) {
+				case 0:
+					img = getImage("henrypunch (1).png");
+					scale = 1.5;
+					break;
+				case 1:
+					img = getImage("bella.png");
+					break;
+				case 2:
+					img = getImage("mrdavid.png");			
+					break;
+				case 3:
+					img = getImage("aakarsh.png");
+					break;
+				case 4:
+					img = getImage("vianneguitar.png");
+					scale = 1.5;
+					break;
+				case 5:
+					img = getImage("crypto.png");
+					scale = .5;
+					break;
+			}
+		}*/
+		
 		
 		
 		
