@@ -249,6 +249,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				bg.endGame2();
 				}
 		   }
+		   if(arg0.getKeyCode() == 78) {
+			   character2.punchSprite = true; 
+		 
+		   }
+		   if(arg0.getKeyCode() == 88) {
+			   character2.punchSprite = true; 
+		   }
+		   
 		// TODO Auto-generated method stub
 		//change boolean for right sprite
 	
