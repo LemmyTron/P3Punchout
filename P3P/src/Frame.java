@@ -142,6 +142,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		
+		//use x and y values of mouse to figure out what is being selected
 		if(bg.selectTime&& arg0.getX() >=20 && arg0.getX()<= 180) {
 			if(arg0.getY()>=180 && arg0.getY() <= 280) {
 				preview.dec();
@@ -152,11 +153,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				preview.inc();				
 			}
 		}
+		
 		if(bg.selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
 			if(arg0.getY()>=350 && arg0.getY() <= 410) {
-				System.out.println(preview.picked());
-				System.out.println(preview.getDex());
-
+				
+				//use preview method to make sure only two
+				//different players are picked 
 				if(preview.picked() == -1)
 				{
 				 character1 = preview.whoIsYou(preview.getDex(),80,200,true);
