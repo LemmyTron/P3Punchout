@@ -110,6 +110,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//paint the appropriate Game Over screen
 		if(bg.gameOver) {
 			bg.paint(g);
+			Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 20);
+			g.setFont(fnt);
+			g.drawString("Congratulations " + bg.getReadW(), 200, 400);
 		}
 		
 
