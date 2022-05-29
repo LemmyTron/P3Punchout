@@ -50,6 +50,7 @@ public class Background{
 		
 		
 		//call update to update the actually picture location
+		//test track
 		//
 		update();
 		g2.drawImage(img, tx, null);
