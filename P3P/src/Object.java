@@ -22,7 +22,7 @@ public class Object {
 		
   
 		
-		
+		//confirm newest merge
 		//set image method to change for diff characters
 		
 		public Object(int x, int y, String image, boolean whichWay, double velocity) {
