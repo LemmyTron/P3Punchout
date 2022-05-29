@@ -8,4 +8,10 @@ public class Rocket extends Object{
 		this.x= b.getX();
 		
 	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
 }

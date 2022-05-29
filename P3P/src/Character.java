@@ -298,25 +298,31 @@ public class Character {
 			//tx.scale(1, 1)
 			switch(index) {
 				case 0:
-					img = getImage("henrypunch (1).png");
-					scale = 1.5;
+					punchedImg = getImage("henrypunch.png");
+					scale = .5;
+					g2.drawImage(punchedImg, tx, null);
 					break;
 				case 1:
-					img = getImage("bella.png");
+					punchedImg = getImage("bellapunch.png");
+					g2.drawImage(punchedImg, tx, null);
 					break;
 				case 2:
-					img = getImage("mrdavid.png");			
+					punchedImg = getImage("mrdavidpunch.png");	
+					g2.drawImage(punchedImg, tx, null);
 					break;
 				case 3:
-					img = getImage("aakarsh.png");
+					punchedImg = getImage("aakarshpunch.png");
+					g2.drawImage(punchedImg, tx, null);
 					break;
 				case 4:
-					img = getImage("vianneguitar.png");
+					punchedImg = getImage("viannepunch.png");
 					scale = 1.5;
+					g2.drawImage(punchedImg, tx, null);
 					break;
 				case 5:
-					img = getImage("crypto.png");
+					punchedImg = getImage("cryptoclubpunch.png");
 					scale = .5;
+					g2.drawImage(punchedImg, tx, null);
 					break;
 			}
 		}*/
@@ -325,7 +331,10 @@ public class Character {
 		
 		
 	}
-
+	public int getIndex() {
+		return index; 
+	}
+	
 	public Object getFgrade() {
 		return fgrade;
 	}

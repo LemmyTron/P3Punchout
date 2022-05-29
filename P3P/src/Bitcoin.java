@@ -6,7 +6,6 @@ public class Bitcoin extends Object{
 		// TODO Auto-generated constructor stub
 	}
 	public void update() {
-		
 		x +=vx;
 		y +=vy;
 		vy +=g;
@@ -21,5 +20,11 @@ public class Bitcoin extends Object{
 	}
 	//if crypto faces right && throw key clicked, call bitcoin projectile
 	//if jump, projectile goes where
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
 	
 }

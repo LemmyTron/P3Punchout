@@ -19,6 +19,8 @@ public class Object {
 		//boolean for paint
 		//set boolean true, if true paint 
 		private boolean paintObj;
+
+
 		
   
 		

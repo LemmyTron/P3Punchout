@@ -31,7 +31,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Character  character2 	= null;
 	//declare character for selection display
 	Character  preview 	= new Character(320, 150, 100, "henrystand.png", 7.03, true, 1.5);
-	
+	//declare and init objects with null vals
+	//to fill later during selection
+	Object object1 = null;
+	Object object2 = null; 
+	//declare character for selection display
+	Object  previewObj = new Object(320, 150, "tennisball.png", true, 1.5);
 	//initialize variables for keeping track of time
 	double start;
 	double soFar;
@@ -290,14 +295,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		        bg.end(character1, character2);
 				}
 		   }
-		   if(arg0.getKeyCode() == 78) {
-			   character2.punchSprite = true; 
+		   /*if(arg0.getKeyCode() == 78) {
+			   character2.punchSprite = false; 
 		 
 		   }
 		   if(arg0.getKeyCode() == 88) {
-			   character2.punchSprite = true; 
+			   character1.punchSprite = false; 
 		   }
-		   
+		   */
 		// TODO Auto-generated method stub
 		//change boolean for right sprite
 	
