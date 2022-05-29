@@ -159,6 +159,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				
 				//use preview method to make sure only two
 				//different players are picked 
+				//small problem
 				if(preview.picked() == -1)
 				{
 				 character1 = preview.whoIsYou(preview.getDex(),80,200,true);
