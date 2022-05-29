@@ -286,7 +286,6 @@ public class Character {
 					scale = .5;
 					break;
 			}
-			g2.drawImage(punchedImg, tx, null); //need to change img to the punch image
 		}
 		
 		
