@@ -4,6 +4,7 @@ public class Plant extends Object{
 		super(x, y, "plant.png", whichWay, velocity);
 		// TODO Auto-generated constructor stub
 	}
+
 	public void appear(Belluh b) {
 		this.x= b.getX();
 		

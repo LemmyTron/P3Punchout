@@ -4,6 +4,7 @@ public class MusicNotes extends Object{
 		super(x, y, "musicnotes(1).png", whichWay, velocity);
 		// TODO Auto-generated constructor stub
 	}
+
 	public void appear(Vyane b) {
 		this.x= b.getX();
 		

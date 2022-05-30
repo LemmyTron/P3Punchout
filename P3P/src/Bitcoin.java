@@ -5,12 +5,7 @@ public class Bitcoin extends Object{
 		super(x, y, "bitcoin.png", whichWay, velocity);
 		// TODO Auto-generated constructor stub
 	}
-	public void update() {
-		x +=vx;
-		y +=vy;
-		vy +=g;
-		
-	}
+
 	
 	//boom shakalaka
 	

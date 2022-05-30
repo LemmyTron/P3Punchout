@@ -10,31 +10,27 @@ public class Object {
 	//add location attributes
 		public int x, y; //position
 		private Image img; 	
-		protected int vx;
-		protected int vy;
+		private double vx; //can i change this to double
+		private double vy;
 		private AffineTransform tx;
 		public Object resetObject;
-		public boolean throwRight = false; 
+		public boolean faceRight = false; 
 		public double g = .001; 
 		//boolean for paint
 		//set boolean true, if true paint 
 		private boolean paintObj;
 
-
-		
-  
-		
-		//confirm newest merge
-		//set image method to change for diff characters
 		
 		public Object(int x, int y, String image, boolean whichWay, double velocity) {
 			this.x = x;
 			this.y = y;
 			img = getImage(image); //load the image for Tree
-			
 			tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); //initialize the location of the image //use your variables
-			throwRight = whichWay; 
+			faceRight = whichWay; 
+			
+			//do i have to init velocity?
+			vx = velocity; 
 		}   
 		
 		public Object() {
@@ -57,6 +53,7 @@ public class Object {
 			
 
 		}
+		
 		/* update the picture variable location */
 		private void update() {
 			x+= vx; //velocity in y affects y location
@@ -102,6 +99,38 @@ public class Object {
 			}
 			return tempImage;
 		}
+		
+		public Object whatObj(int num, int x, int y, boolean whichWay){
+			switch(num) {
+				case 0:
+				{
+					return new TennisBall(x, y, whichWay);
+				}
+				case 1:
+				{
+					return new Plant(x, y, whichWay);
+				}
+				case 2:
+				{
+					return new FGrade(x, y, whichWay);
+				}
+				case 3:
+				{
+					return new Rocket(x, y, whichWay);
+				}
+				case 4:
+				{
+					return new MusicNotes(x, y, whichWay);
+				}
+				case 5:
+				{
+					return new Bitcoin(x, y, whichWay);
+				}
+			}
+			return null;
+			
+		}
+		
 		public void setImg(Image image) {
 			img = image; 
 		}

@@ -164,10 +164,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 				if(preview.picked() == -1)
 				{
-				 character1 = preview.whoIsYou(preview.getDex(),80,200,true);
-			    	preview.picked[preview.getDex()] = true;
-			    	
-				System.out.println("yassssss");
+				character1 = preview.whoIsYou(preview.getDex(),80,200,true);
+			    preview.picked[preview.getDex()] = true;
+			    System.out.println("yassssss");
+			    
+			    object1 = previewObj.whatObj(previewObj.getDex(),)
 				}
 				else if (preview.picked()!= preview.getDex()) {
 				 character2 = preview.whoIsYou(preview.getDex(),650,200,true);

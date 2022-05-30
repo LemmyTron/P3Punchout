@@ -5,7 +5,7 @@ public class TennisBall extends Object{
 		// TODO Auto-generated constructor stub
 	
 	}
-	
+
 	public void appear(HennyBaby b) {
 		this.x= b.getX();
 		

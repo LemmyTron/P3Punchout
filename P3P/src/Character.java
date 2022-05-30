@@ -25,7 +25,7 @@ public class Character {
 	public Object getObject; 
 	public boolean punchSprite = false; 
 	//new
-	private Image punchedImg; 
+	//private String punchedImg; 
 	
 	//declare scale variable for character sizes
 	private double scale;
@@ -282,7 +282,7 @@ public class Character {
 	}
 	
 	//in character class create a method called setPunch method with punch image parameter, each character has their own assignment of that parameter 
-	public void setPunch(Image punchedImg) {
+	public void setPunch(String punchedImg) {
 		img = getImage(punchedImg);
 	}
 	
