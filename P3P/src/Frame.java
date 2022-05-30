@@ -61,7 +61,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//paint selection screen
 		if(bg.selectTime && !bg.gameBegin)
 		{
-			//create aesthetic rectangle behind preview
+			//set screen so ready for selection
+			bg.select();
+			//create aesthetic rectangle behind preview 
 			g.setColor(new Color(255,255,255));
 			g.fillRect(320, 150, 150, 160);
 			//paint the preview character
@@ -106,9 +108,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		character2.paint(g);
 		//call time managment method
 		//and draw the timer using the vars
-		manageTime();
+		
 		Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 50);
 		g.setColor(new Color(0,5,0));
+		g.setFont(fnt);
+		manageTime();
 		g.drawString(" " + (int)(95 - soFar) , 340, 50);
 		}
 		
@@ -117,11 +121,15 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			bg.paint(g);
 			Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 20);
 			g.setFont(fnt);
-			g.drawString("Congratulations " + bg.getReadW(), 200, 400);
+			//call read/write message
+			g.drawString("Congratulations " + bg.getReadW(), 240, 340);
+			g.drawString("Press Space to Play Again", 240, 30);
 		}
 		
 
 	}
+	
+	//create frame
 
 	public static void main(String[] arg) {
 		Frame f = new Frame();
@@ -142,11 +150,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setVisible(true);
 		
 	}
+	//fix pulling/pushing
 	
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		
+		//use x and y values of mouse to figure out what is being selected
 		if(bg.selectTime&& arg0.getX() >=20 && arg0.getX()<= 180) {
 			if(arg0.getY()>=180 && arg0.getY() <= 280) {
 				preview.dec();
@@ -157,24 +167,40 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				preview.inc();				
 			}
 		}
+		
+		
 		if(bg.selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
 			if(arg0.getY()>=350 && arg0.getY() <= 410) {
-				System.out.println(preview.picked());
-				System.out.println(preview.getDex());
-
+				
+				//use preview method to make sure only two
+				//different players are picked 
 				if(preview.picked() == -1)
 				{
+<<<<<<< HEAD
 				character1 = preview.whoIsYou(preview.getDex(),80,200,true);
 			    preview.picked[preview.getDex()] = true;
 			    System.out.println("yassssss");
 			    
 			    object1 = previewObj.whatObj(previewObj.getDex(),)
+=======
+					//initialize character 1 to selected character
+					character1 = preview.whoIsYou(preview.getDex(),80,200,true);
+					//set first character being taken's slot
+					//to true
+					preview.picked[preview.getDex()] = true;
+>>>>>>> branch 'main' of https://github.com/WolverineProgrammer/P3Punchout.git
 				}
 				else if (preview.picked()!= preview.getDex()) {
-				 character2 = preview.whoIsYou(preview.getDex(),650,200,true);
-					System.out.println("oink");
+			        //initialize character 2 to selected character
+				    character2 = preview.whoIsYou(preview.getDex(),650,200,true);
+				    //start the game
+				    //by setting gameStart var
+				    //to true
 					bg.gameBegin = true;
+					//change background accordingly
+					//w setter
 					bg.setX(getX() - 100);
+					//start the timer
 					startTimer();
 				}
 				
@@ -224,6 +250,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				   character1.moveRight();
 				   preview.inc();
 				   System.out.println(preview.getDex());
+				   String k = "henrypunch.png";
+				   character1.getChars(k);
 				   break;
 			case 65: //letter a
 				   character1.moveLeft();
@@ -264,6 +292,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 					preview.noPhysics = true;
 	
 			   }
+			   //restart game when necessary
+			   if(arg0.getKeyCode() == 32 && bg.gameOver)
+			   {
+				   bg.reset(character1, character2, preview);
+			   }
 			
 			   if(arg0.getKeyCode() == 73 && character2.y == 325) { //letter m
 				   character2.jump();
@@ -298,7 +331,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 		   }
 		   if(arg0.getKeyCode() == 78) {
+<<<<<<< HEAD
 			   character2.punchSprite = false; 
+=======
+			   character2.punchSprite = true; 
+			   
+>>>>>>> branch 'main' of https://github.com/WolverineProgrammer/P3Punchout.git
 		 
 		   }
 		   if(arg0.getKeyCode() == 88) {
@@ -327,6 +365,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	
 	@Override
+	
+
+	
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		

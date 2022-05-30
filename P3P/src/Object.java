@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
-
+//test
 public class Object {
 	//add location attributes
 		public int x, y; //position

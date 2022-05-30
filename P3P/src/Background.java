@@ -73,6 +73,19 @@ public class Background{
 
 	}
 	
+	public void reset(Character uno, Character dos, Character tres) {
+		gameBegin = false;
+		gameOver = false;
+		uno = null;
+		dos = null;
+		for(int i = 0; i < 6; i++) {
+			tres.picked[i] = false;
+		}
+		setX(getX() + 100);
+
+		
+	}
+	
 	//set methods for backgrounds:
 	//computer lab
 	public void compLab() {
