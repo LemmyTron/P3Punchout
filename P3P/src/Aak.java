@@ -10,8 +10,6 @@ public class Aak extends Character{
 	public int getY() {
 		return getY();
 	}
-	public void getPunchImg() {
-		img = getImage("aakarshpunch.png");
-	}
+	
 
 }
