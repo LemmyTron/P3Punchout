@@ -236,6 +236,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				   character1.moveRight();
 				   preview.inc();
 				   System.out.println(preview.getDex());
+				   String k = "henrypunch.png";
+				   character1.getChars(k);
 				   break;
 			case 65: //letter a
 				   character1.moveLeft();
