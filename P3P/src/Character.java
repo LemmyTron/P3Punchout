@@ -282,8 +282,8 @@ public class Character {
 	}
 	
 	//in character class create a method called setPunch method with punch image parameter, each character has their own assignment of that parameter 
-	public void setPunch(String punchedImg) {
-		img = getImage (punchedImg);
+	public void setPunch(Image punchedImg) {
+		img = getImage(punchedImg);
 	}
 	
 	public void paint(Graphics g) {
