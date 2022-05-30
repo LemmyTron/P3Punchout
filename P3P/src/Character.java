@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.net.URL;
+import java.util.Arrays;
 public class Character {
 	private static int index = 0;
 	public int x, y, hp; 
@@ -280,6 +281,11 @@ public class Character {
 		return tempImage;
 	}
 	
+	//in character class create a method called setPunch method with punch image parameter, each character has their own assignment of that parameter 
+	public void setPunch(String punchedImg) {
+		img = getImage (punchedImg);
+	}
+	
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
@@ -290,42 +296,53 @@ public class Character {
 		g2.drawImage(img, tx, null);
 		
 		
-		/*if(punchSprite == false) {
+		if(punchSprite == false) {
 			//tx.scale(1,  1);
 			g2.drawImage(img,  tx, null);
 		}
 		else{
+			if(punchSprite == true){
+				g2.drawImage(punchedImg, tx, null);
+			}
+			//while blah is true, set img
+			//create a method in character class called setPunch , put that in every individual character class with actual image for each character
 			//tx.scale(1, 1)
-			switch(index) {
+			/*switch(index) {
 				case 0:
 					punchedImg = getImage("henrypunch.png");
 					scale = .5;
 					g2.drawImage(punchedImg, tx, null);
+					System.out.println(index); 
 					break;
 				case 1:
 					punchedImg = getImage("bellapunch.png");
 					g2.drawImage(punchedImg, tx, null);
+					System.out.println(index); 
 					break;
 				case 2:
 					punchedImg = getImage("mrdavidpunch.png");	
 					g2.drawImage(punchedImg, tx, null);
+					System.out.println(index); 
 					break;
 				case 3:
 					punchedImg = getImage("aakarshpunch.png");
 					g2.drawImage(punchedImg, tx, null);
+					System.out.println(index); 
 					break;
 				case 4:
 					punchedImg = getImage("viannepunch.png");
-					scale = 1.5;
+					scale = .5;
 					g2.drawImage(punchedImg, tx, null);
+					System.out.println(index); 
 					break;
 				case 5:
 					punchedImg = getImage("cryptoclubpunch.png");
 					scale = .5;
 					g2.drawImage(punchedImg, tx, null);
+					System.out.println(index); 
 					break;
-			}
-		}*/
+			}*/
+		}
 		
 		
 		

@@ -166,6 +166,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				{
 				 character1 = preview.whoIsYou(preview.getDex(),80,200,true);
 			    	preview.picked[preview.getDex()] = true;
+			    	
 				System.out.println("yassssss");
 				}
 				else if (preview.picked()!= preview.getDex()) {
@@ -295,14 +296,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		        bg.end(character1, character2);
 				}
 		   }
-		   /*if(arg0.getKeyCode() == 78) {
+		   if(arg0.getKeyCode() == 78) {
 			   character2.punchSprite = false; 
 		 
 		   }
 		   if(arg0.getKeyCode() == 88) {
 			   character1.punchSprite = false; 
 		   }
-		   */
+		   
 		// TODO Auto-generated method stub
 		//change boolean for right sprite
 	
