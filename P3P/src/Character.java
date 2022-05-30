@@ -100,6 +100,11 @@ public class Character {
 	
 	}
 	
+	
+	public void getChars(String yuh) {
+		img = getImage(yuh);
+	}
+	
 	//increase the index variable and rotate when necessary
 	public void inc() {
 		setDex(getDex()+1);

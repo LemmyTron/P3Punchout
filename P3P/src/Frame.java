@@ -316,6 +316,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		   }
 		   if(arg0.getKeyCode() == 78) {
 			   character2.punchSprite = true; 
+			   
 		 
 		   }
 		   if(arg0.getKeyCode() == 88) {
