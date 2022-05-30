@@ -5,10 +5,13 @@ public class Aak extends Character{
 		// TODO Auto-generated constructor stub
 	}
 	public int getX() {
-		return x;
+		return getX();
 	}
 	public int getY() {
-		return y;
+		return getY();
+	}
+	public void getPunchImg() {
+		img = getImage("aakarshpunch.png");
 	}
 
 }

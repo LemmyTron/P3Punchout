@@ -62,7 +62,7 @@ public class Background{
 	public void end(Character uno, Character dos) {
 		gameOver = true;
 		//use if-statements to 
-		if (uno.hp > dos.hp || uno.hp == dos.hp) {
+		if (uno.getHp() > dos.getHp() || uno.getHp() == dos.getHp()) {
 			endGame1();
 			congratulate("Player 1");
 		}

@@ -8,10 +8,10 @@ public class CrypClub extends Character{
 		//if the obj intersects w the box
 	}
 	public int getX() {
-		return x;
+		return getX();
 	}
 	public int getY() {
-		return y;
+		return getY();
 	}
 
 }

@@ -5,10 +5,13 @@ public class Vyane extends Character {
 		// TODO Auto-generated constructor stub
 	}
 	public int getX() {
-		return x;
+		return getX();
 	}
 	//fix this
 	public int getY() {
-		return y;
+		return getY();
+	}
+	public void getPunchImg() {
+		img = getImage("viannepunch.png");
 	}
 }

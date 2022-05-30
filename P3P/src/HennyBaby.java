@@ -8,9 +8,12 @@ public class HennyBaby extends Character{
 	
 	
 	public int getX() {
-		return x;
+		return getX();
 	}
 	public int getY() {
-		return y;
+		return getY();
+	}
+	public void getPunchImg() {
+		img = getImage("henrypunch.png");
 	}
 }
