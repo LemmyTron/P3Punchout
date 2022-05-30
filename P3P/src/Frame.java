@@ -123,6 +123,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 
 	}
+	
+	//create frame
 
 	public static void main(String[] arg) {
 		Frame f = new Frame();
