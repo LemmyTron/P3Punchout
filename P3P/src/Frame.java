@@ -145,6 +145,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setVisible(true);
 		
 	}
+	//fix pulling/pushing
 	
 	
 	@Override
