@@ -56,7 +56,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//paint selection screen
 		if(bg.selectTime && !bg.gameBegin)
 		{
-			//create aesthetic rectangle behind preview
+			//set screen so ready for selection
+			bg.select();
+			//create aesthetic rectangle behind preview 
 			g.setColor(new Color(255,255,255));
 			g.fillRect(320, 150, 150, 160);
 			//paint the preview character
@@ -101,9 +103,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		character2.paint(g);
 		//call time managment method
 		//and draw the timer using the vars
-		manageTime();
+		
 		Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 50);
 		g.setColor(new Color(0,5,0));
+		g.setFont(fnt);
+		manageTime();
 		g.drawString(" " + (int)(95 - soFar) , 340, 50);
 		}
 		
@@ -112,7 +116,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			bg.paint(g);
 			Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 20);
 			g.setFont(fnt);
-			g.drawString("Congratulations " + bg.getReadW(), 200, 400);
+			//call read/write message
+			g.drawString("Congratulations " + bg.getReadW(), 240, 340);
+			g.drawString("Press Space to Play Again", 240, 30);
 		}
 		
 
@@ -154,23 +160,31 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 		
+		
 		if(bg.selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
 			if(arg0.getY()>=350 && arg0.getY() <= 410) {
 				
 				//use preview method to make sure only two
 				//different players are picked 
-				//small problem
 				if(preview.picked() == -1)
 				{
-				 character1 = preview.whoIsYou(preview.getDex(),80,200,true);
-			    	preview.picked[preview.getDex()] = true;
-				System.out.println("yassssss");
+					//initialize character 1 to selected character
+					character1 = preview.whoIsYou(preview.getDex(),80,200,true);
+					//set first character being taken's slot
+					//to true
+					preview.picked[preview.getDex()] = true;
 				}
 				else if (preview.picked()!= preview.getDex()) {
-				 character2 = preview.whoIsYou(preview.getDex(),650,200,true);
-					System.out.println("oink");
+			        //initialize character 2 to selected character
+				    character2 = preview.whoIsYou(preview.getDex(),650,200,true);
+				    //start the game
+				    //by setting gameStart var
+				    //to true
 					bg.gameBegin = true;
+					//change background accordingly
+					//w setter
 					bg.setX(getX() - 100);
+					//start the timer
 					startTimer();
 				}
 				
@@ -260,6 +274,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 					preview.noPhysics = true;
 	
 			   }
+			   //restart game when necessary
+			   if(arg0.getKeyCode() == 32 && bg.gameOver)
+			   {
+				   bg.reset(character1, character2, preview);
+			   }
 			
 			   if(arg0.getKeyCode() == 73 && character2.y == 325) { //letter m
 				   character2.jump();
@@ -323,6 +342,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	
 	@Override
+	
+
+	
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		

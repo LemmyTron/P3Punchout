@@ -9,20 +9,26 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.net.URL;
 public class Character {
+	//declare/initialize variable for character selection index
 	private static int index = 0;
+	//declare x/y location values, health values variables
 	public int x, y, hp; 
+	//declare velocity variables
 	public int hv, vv;
+	//declare speed variable
 	public double speed;
+	//declare boolean for selection screen physics
 	public boolean noPhysics = false;
-	public boolean faceRight = false;
-	public boolean p1 = false;
-	
+	//declare boolean to check which way the character faces
+	public boolean faceRight = false;	
 	
 	private Object bitcoin;
 	private Object fgrade;
 	private Object musicnotes;
 	public Object getObject; 
 	public boolean punchSprite = false; 
+	private Object plant;
+
 	//new
 	private Image punchedImg; 
 	
@@ -52,9 +58,8 @@ public class Character {
 	private Image img; 	
 
 	private AffineTransform tx;
-	private Object plant;
 
-	//create constructor for object
+	//create character constructor for parent-class
 	public Character(int x, int y, int health, String pers, double fastness, boolean whichWay, double height) {
 		this.x = x;
 		this.y = y;
@@ -79,7 +84,7 @@ public class Character {
 		return tx;
 	}
 	
-
+	//update the character
 	public void update() {
 		
 		x+=hv;
@@ -94,22 +99,29 @@ public class Character {
 		tx.scale(scale, scale);
 	
 	}
+	
+	//increase the index variable and rotate when necessary
 	public void inc() {
-		index++;
+		setDex(getDex()+1);
 		if(getDex() == 6){
 			setDex(0);
 		}
 			
 	}
+	//decrease the index variable and rotate when necessary
 	public void dec() {
-		index--;
+		setDex(getDex()-1);		
 		if(getDex() == -1){
 			setDex(5);
 		}
 			
 	}
-	
+	//method to actually set character1 and character2
+	//variables to right characters
 	public Character whoIsYou(int num, int x, int y, boolean whichWay ){
+		//switch statement to actually set the character as necessary
+		//by returning it correctly, using the
+		//index of the character select screen
 		switch(num) {
 			case 0:
 			{
@@ -140,14 +152,8 @@ public class Character {
 		
 	}
 	
-	public void setDex(int give) {
-		index = give ;
-	}
-	
-	public static int getDex() {
-		return index;
-	}
-	
+	//method with a for-loop
+	//to see if different characters are picked
 	public int picked() {
 		for(int i = 0; i < 6; i++) {
 			if(picked[i]) {
@@ -158,7 +164,8 @@ public class Character {
 	}
 	
 	
-	
+	//movement methods using velocity
+	//(both horizontal and vertical)
 	public void jump()
 	{
 		vv -= 25; 
@@ -171,29 +178,6 @@ public class Character {
 	
 	}
 	
-	public void punch(Character opp, boolean rightDir, int hurtedness)
-	{
-	 	if (rightDir && opp.x > this.x && opp.x< this.x + 70)
-	 	{
-	 		opp.hp -= hurtedness;
-	 		System.out.println(1);
-	 	}
-	 		
-		if (!rightDir && opp.x < this.x && opp.x> this.x - 70)
-	 	{
-	 		opp.hp -= hurtedness;
-	 		System.out.println(2);
-
-	 	}
-		
-		
-		
-		System.out.println(opp.hp);
-	 		
-	}
-	
-	
-	
 	public void moveRight()
 	{
 	hv += speed;
@@ -201,6 +185,32 @@ public class Character {
 	
 	}
 	
+	//declare punch method 
+	//parameters for opponent, damage, right direction
+	public void punch(Character opp, boolean rightDir, int hurtedness)
+	{	
+		//check if opponent is in range
+		//using x and y and if right way is faced
+		
+	 	if (rightDir && opp.x > this.x && opp.x< this.x + 70 && this.y< opp.y + 40 && this.y> opp.y - 40)
+	 	{
+	 		
+	 		opp.hp -= hurtedness;
+	 		//subtract damage
+	 	}
+	 		
+		if (!rightDir && opp.x < this.x && opp.x> this.x - 70 && this.y< opp.y + 40 && this.y> opp.y - 40)
+	 	{
+	 		opp.hp -= hurtedness;
+	 		
+	 	}	 		
+	}
+	
+	
+	
+
+	//method for physics
+	//and character location
 	public void regulate()
 	{
 		if(hv > 0){
@@ -231,8 +241,12 @@ public class Character {
 		}	
 	} 
 	
+	//method for getting right image
+	//for character select screen
 	public void preview(){
-	
+		//switch statement using the index of 
+		//the character selct screen, getting the right
+		//image and scaling as necessary
 		switch(index) {	
 		case 0:
 			img = getImage("henrystand.png");
@@ -280,6 +294,7 @@ public class Character {
 		return tempImage;
 	}
 	
+	//paint character method
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
@@ -326,6 +341,17 @@ public class Character {
 		
 	}
 
+	
+	//setters and getters
+	
+	public void setDex(int give) {
+		index = give ;
+	}
+	
+	public static int getDex() {
+		return index;
+	}
+	
 	public Object getFgrade() {
 		return fgrade;
 	}
