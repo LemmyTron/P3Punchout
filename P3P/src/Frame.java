@@ -1,3 +1,19 @@
+/*
+ * LEAVE GAME COMMENTS HERE
+ * reminders:
+ * ... see readme for instructions 
+ * 		during char select, be patient
+ *				-might need to click a few times
+ *				-check console to see if selection goes thru
+ *				-feel free to replay if it needs to reload
+ *
+ *comment below:
+ *
+ *
+ *
+ *
+ */
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
