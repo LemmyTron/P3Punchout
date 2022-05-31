@@ -4,12 +4,5 @@ public class Aak extends Character{
 		super(x, y, 95, "aakarsh.png", "aakarshrev.png", "aakarshpunch.png", "aakarshpunchrev.png", 8, whichWay, 0.35);
 		// TODO Auto-generated constructor stub 
 	}
-	public int getX() {
-		return getX();
-	}
-	public int getY() {
-		return getY();
-	}
-	
 
 }

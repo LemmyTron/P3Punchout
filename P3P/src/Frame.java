@@ -18,18 +18,17 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-	
 	//declare and instantiate background
 	Background 	bg 	= new Background(0, 0);
 	//declare and initialize characters with null vals
 	//to fill later during selection
 	Character character1 	= null;
-	private Character  character2 	= null;
+	Character  character2 	= null;
 	//declare character for selection display
 	Character  preview 	= new Character(320, 150, 100, "henrystand.png", "henryrev.png", "henrypunch.png",  "henrypunchrev.png", 7.03, true, 1.5);
 	//declare and init objects with null vals
 	//to fill later during selection
-	//declare character for selection display 
+	//declare character for selection display
 	//initialize variables for keeping track of time
 	double start;
 	double soFar;
@@ -43,7 +42,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		//paint screens and its instructions using
 		//booleans to check progression
-		//start w title
+		//starting w/ title
 		if (!bg.selectTime)
 		{
 			//create instructions on title screen
@@ -63,7 +62,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			//between characters using a switch statement
 			preview.preview();
 			//draw character names on screen using
-			//utilize case switch
+			//a switch statement
 			Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 20);
 			g.setFont(fnt);
 			switch(preview.getDex()) {	
@@ -88,7 +87,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				break;
 			}
 		}
-		
+
 		//paint the main fighting screen when triggered
 		if (bg.gameBegin && !bg.gameOver)
 		{
@@ -96,10 +95,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		bg.compLab();
 		//paint character
 		character1.paint(g);
-		getCharacter2().paint(g);
+		character2.paint(g);
 		//show hp score
 		g.drawString("HP: " + character1.getHpStr(), 100, 50);
-		g.drawString("HP: " + getCharacter2().getHpStr(), 650, 50);
+		g.drawString("HP: " + character2.getHpStr(), 650, 50);
 		//call time managment method
 		//and draw the timer using the vars
 		manageTime();
@@ -116,10 +115,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			g.setFont(fnt);
 			g.drawString("Congratulations " + bg.getReadW(), 230, 330);
 			g.drawString("Press Space to Play Again " , 235, 60);
-
 		}
-
-
 	}
 	public static void main(String[] arg) {
 		Frame f = new Frame();
@@ -144,7 +140,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-
 		//decrease selection index when left arrow is pressed
 		//using method
 		if(bg.selectTime&& arg0.getX() >=20 && arg0.getX()<= 180) {
@@ -170,14 +165,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				character1 = preview.whoIsYou(preview.getDex(),80,200,true);
 			    preview.picked[preview.getDex()] = true;
 			    System.out.println("yassssss");
-
 				}
 			}
 			
 				//ensure there aren't repeats for char 2
 				//start the game
 				else if (preview.picked()!= preview.getDex()) {
-				    setCharacter2(preview.whoIsYou(preview.getDex(),650,200,false));
+				    character2 = preview.whoIsYou(preview.getDex(),650,200,false);
 					System.out.println("oink");
 					bg.gameBegin = true;
 					//fix scaling
@@ -185,16 +179,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 					//start the timer using the startTimer method
 					startTimer();
 				}
-
 				
 			}
 			
 		
 		}
-
-
-
-
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		
@@ -225,39 +214,41 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			//to collect the keycode being used
 			//and move accordingly
 			int code = arg0.getKeyCode();
-			
+
 			switch (code) { 
-			
+
 			case 68: //letter d
 				   character1.moveRight();
+				   //preview.inc();
+				   //System.out.println(preview.getDex());
 				   character1.setFaceRight(true); 
 				   break;
-			
+
 			case 65: //letter a
 				   character1.moveLeft();
 				   character1.setFaceRight(false); 
 				   break;
-			
-			 
+
+
 			case 76: //letter l
-				   getCharacter2().moveRight();
-				   getCharacter2().setFaceRight(true); 
+				   character2.moveRight();
+				   character2.setFaceRight(true); 			
 				   break;
-			  
+
 			case 74: //letter j
-				   getCharacter2().moveLeft();
-				   getCharacter2().setFaceRight(false); 
+				   character2.moveLeft();
+				   character2.setFaceRight(false); 				   
 				   break;
-				   
+
 			case 90: //letter n
 				character1.punching = true; 
 				break; 
-				
+
 			case 77:
-				getCharacter2().punching = true;
+				character2.punching = true;
 				break;
 
-			 
+
 			   }  
 			   //start selection sequence when
 			   // when the spacebar is first pressed
@@ -271,19 +262,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 					preview.setNoPhysics(true);
 				   }
 					if(bg.gameOver) {
-					 bg.reset(character1, getCharacter2(), preview);
+					 bg.reset(character1, character2, preview);
 					}
 
 			   }
 
-			   if(arg0.getKeyCode() == 73 && getCharacter2().getY() == 325) { //letter m
-				   getCharacter2().jump();
+			   if(arg0.getKeyCode() == 73 && character2.getY() == 325) { //letter m
+				   character2.jump();
+
 			   }
-			   
+
 			   if(arg0.getKeyCode() == 87 && character1.getY() == 325) { //letter w
 				   character1.jump();
 			   }
-			   
+
 	}
 	@Override
 	public void keyReleased(KeyEvent arg0) {
@@ -293,23 +285,23 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		int p = arg0.getKeyCode();
 		switch(p) {
 		case 90:
-			   character1.punch(getCharacter2(),character1.isFaceRight(), 10);
-			   if(getCharacter2().getHp() <= 0)
+			   character1.punch(character2,character1.isFaceRight(), 10);
+			   if(character2.getHp() <= 0)
 				{
-		        bg.end(character1, getCharacter2());	 
+		        bg.end(character1, character2);	 
 				}
 			   character1.punching = false; 
 			   break;
 		case 77:
-			   getCharacter2().punch(character1,getCharacter2().isFaceRight(), 10);
+			   character2.punch(character1,character2.isFaceRight(), 10);
 			   if(character1.getHp() <= 0)
 				{
-		        bg.end(character1, getCharacter2());
+		        bg.end(character1, character2);
 				}
-			   getCharacter2().punching = false; 
+			   character2.punching = false; 
 		   }
-		 
-		   
+
+
 		// TODO Auto-generated method stub
 		//change boolean for right sprite
 	
@@ -326,20 +318,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
         //timer reaches 0
         if(90 - soFar == 0)
         {
-        	bg.end(character1, getCharacter2());
+        	bg.end(character1, character2);
         }
 	}
-	
+
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	public Character getCharacter2() {
-		return character2;
-	}
-	public void setCharacter2(Character character2) {
-		this.character2 = character2;
-	}
-	
 }
+

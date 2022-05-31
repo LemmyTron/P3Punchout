@@ -3,12 +3,5 @@ public class Belluh extends Character{
 		super(x, y, 60, "bella.png", "bellarev.png", "bellapunch.png", "bellapunchrev.png", 10, whichWay, 0.31);
 		// TODO Auto-generated constructor stub
 	}
-	public int getX() {
-		return getX();
-	}
-	public int getY() {
-		return getY();
-	}
-
 	
 }

@@ -4,11 +4,5 @@ public class CrypClub extends Character{
 		super(x, y, 130, "crypto.png", "cryptorev.png", "crypto.png", "cryptorev.png", 5.0, whichWay, 0.16);
 		
 	}
-	public int getX() {
-		return getX();
-	}
-	public int getY() {
-		return getY();
-	}
 
 }
