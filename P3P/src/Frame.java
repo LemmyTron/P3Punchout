@@ -147,6 +147,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				preview.dec();
 			}
 		}
+		
 		//increase selection index when left arrow is pressed 
 		//using method
 		if(bg.selectTime &&arg0.getX() >=630 && arg0.getX()<= 790) {
