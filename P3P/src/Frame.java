@@ -6,7 +6,6 @@
  *				-might need to click a few times
  *				-check console to see if selection goes thru
  *				-feel free to replay if it needs to reload
- *
  *comment below:
  *
  *
