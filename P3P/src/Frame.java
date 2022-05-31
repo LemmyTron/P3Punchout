@@ -58,6 +58,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//paint selection screen
 		if(bg.selectTime && !bg.gameBegin)
 		{
+			bg.select();
 			//create aesthetic rectangle behind preview
 			g.setColor(new Color(255,255,255));
 			g.fillRect(320, 150, 150, 160);
@@ -99,7 +100,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		{
 		//call method to change background
 		bg.compLab();
-		//paint characters
+		//paint character
 		character1.paint(g);
 		character2.paint(g);
 		//show hp score
@@ -109,6 +110,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//and draw the timer using the vars
 		manageTime();
 		Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 50);
+		g.setFont(fnt);
 		g.setColor(new Color(0,5,0));
 		g.drawString(" " + (int)(95 - soFar) , 340, 50);
 		}
@@ -118,7 +120,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			bg.paint(g);
 			Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 20);
 			g.setFont(fnt);
-			g.drawString("Congratulations " + bg.getReadW(), 200, 400);
+			g.drawString("Congratulations " + bg.getReadW(), 230, 330);
+			g.drawString("Press Space to Play Again " , 235, 60);
+
 		}
 		
 
@@ -148,21 +152,26 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		
+		//decrease selection index when left arrow is pressed
+		//using method
 		if(bg.selectTime&& arg0.getX() >=20 && arg0.getX()<= 180) {
 			if(arg0.getY()>=180 && arg0.getY() <= 280) {
 				preview.dec();
 			}
 		}
+		//incresae selection index when left arrow is pressed
+		//using method
 		if(bg.selectTime &&arg0.getX() >=630 && arg0.getX()<= 790) {
 			if(arg0.getY()>=180 && arg0.getY() <= 280) {
 				preview.inc();				
 			}
 		}
+		//select characters when button is pressed
 		if(bg.selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
 			if(arg0.getY()>=350 && arg0.getY() <= 410) {
-				System.out.println(preview.picked());
-				System.out.println(preview.getDex());
 
+				//make sure no character has been selected yet
+				//char 1
 				if(preview.picked() == -1)
 				{
 				character1 = preview.whoIsYou(preview.getDex(),80,200,true);
@@ -170,20 +179,23 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			    System.out.println("yassssss");
 			    
 				}
-			}
-				else { if (preview.picked()!= preview.getDex()) {
-				 character2 = preview.whoIsYou(preview.getDex(),650,200,false);
+			
+				//ensure there aren't repeats for char 2
+				//start the game
+				else if (preview.picked()!= preview.getDex()) {
+				    character2 = preview.whoIsYou(preview.getDex(),650,200,false);
 					System.out.println("oink");
 					bg.gameBegin = true;
+					//fix scaling
 					bg.setX(getX() - 100);
+					//start the timer using the startTimer method
 					startTimer();
 				}
 				
-				
+			}
 			}
 		}
-		
-	}
+
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
@@ -262,12 +274,17 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   //start selection sequence when
 			   // when the spacebar is first pressed
 			   //using booleans and an if-statement
-			   if(arg0.getKeyCode() == 32 && !bg.selectTime) { //letter w
+			   if(arg0.getKeyCode() == 32) { //letter w
 				   	//call screen change method, change bool accordingly
+				   if(!bg.selectTime) {
 				    bg.select();
 					bg.selectTime = true;
 					//turn established physics off for preview
 					preview.noPhysics = true;
+				   }
+					if(bg.gameOver) {
+					 bg.reset(character1, character2, preview);
+					}
 	
 			   }
 			
