@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
+	
 	//declare and instantiate background
 	Background 	bg 	= new Background(0, 0);
 	//declare and initialize characters with null vals
@@ -62,7 +63,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			//between characters using a switch statement
 			preview.preview();
 			//draw character names on screen using
-			//a switch statement
+			//utilize case switch
 			Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 20);
 			g.setFont(fnt);
 			switch(preview.getDex()) {	
