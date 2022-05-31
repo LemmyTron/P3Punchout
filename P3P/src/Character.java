@@ -13,15 +13,15 @@ public class Character {
 	//declare/initialize variable for character selection index
 	private static int index = 0;
 	//declare x/y location values, health values variables
-	public int x, y, hp; 
+	private int x, y, hp; 
 	//declare velocity variables
-	public int hv, vv;
+	private int hv, vv;
 	//declare speed variable
-	public double speed;
+	private double speed;
 	//declare boolean for selection screen physics
-	public boolean noPhysics = false;
+	private boolean noPhysics = false;
 	//declare boolean to check which way the character faces
-	public boolean faceRight = false;	
+	private boolean faceRight = false;	
 	//declare scale variable for character sizes
 	private double scale;
 	//declare boolean variable for if punch is called
@@ -73,7 +73,7 @@ public class Character {
 		tx = AffineTransform.getTranslateInstance(x, y );
 		init(x, y); 			
 		
-		faceRight = whichWay;
+		setFaceRight(whichWay);
 		//add constructors above to for different img strings
 			//to be assigned to values in each character subclass
 		reg = pers;
@@ -185,14 +185,14 @@ public class Character {
 	public void moveLeft()
 	{
 	hv -= speed;
-	faceRight = false;
+	setFaceRight(false);
 	
 	}
 	
 	public void moveRight()
 	{
 	hv += speed;
-	faceRight = true;
+	setFaceRight(true);
 	
 	}
 	
@@ -253,16 +253,16 @@ public class Character {
 		
 		//use booleans to figure out sprite transitions
 			//based on direction facind and if punching
-		if(faceRight && !punching) {
+		if(isFaceRight() && !punching) {
 			sprite(reg);
 		}
-		if(!faceRight && !punching) {
+		if(!isFaceRight() && !punching) {
 			sprite(rev);
 		}
-		if(faceRight && punching) {
+		if(isFaceRight() && punching) {
 			sprite(punch);
 		}
-		if(!faceRight && punching) {
+		if(!isFaceRight() && punching) {
 			sprite(revpunch);
 		}
 	} 
@@ -336,29 +336,130 @@ public class Character {
 		
 	
 		}
-	//setters and getters
-	
-	public int getIndex() {
-		return index; 
+
+//getters	
+	public int getX() {
+		return x; 
 	}
-	
-	public String getHpStr() {
-		return Integer.toString(hp); 
+	public int getY() {
+		return y;
 	}
-	
 	public int getHp() {
 		return hp; 
 	}
-		
+	public int getVv() {
+		return vv; 
+	}
+	public int getHv() {
+		return hv; 
+	}
+	public double getSpeed() {
+		return speed; 
+	}
+	public boolean getNoPhysics() {
+		return noPhysics; 
+	}
+	public boolean getFaceRight() {
+		return isFaceRight();
+	}
+	public double getScale() {
+		return scale; 
+	}
+	public boolean getPunching() {
+		return punching; 
+	}
+	public String getReg() {
+		return reg;
+	}
+	public String getRev() {
+		return rev;
+	}
+	public String getPunch() {
+		return punch;
+	}
+	public String getRevPunch() {
+		return revpunch;
+	}
+	public int getIndex() {
+		return index; 
+	}
+
+	
+	
+	public String getHpStr() {
+		return Integer.toString(hp); 
+	}	
 	public void setDex(int give) {
 		index = give ;
 	}
-	
 	public static int getDex() {
 		return index;
 	}
+//setters
+	public void setX(int setX) {
+		this.x = setX;
+	}
+	public void setY(int setY) {
+		this.y = setY;
+	}
 
-
+	public void setHp(int setHp) {
+		this.hp = setHp;
+	}
+	public void setHv(int setHv) {
+		this.hv = setHv;
+	}
+	public void setVv(int setVv) {
+		this.vv = setVv;
+	}
 	
+	public void setSpeed(double setSpeed) {
+		this.speed = setSpeed;
+	}
+
+	void setNoPhysics(boolean setNoPhysics) {
+		this.noPhysics = setNoPhysics;
+	}
+	
+
+	public void setFaceRight(boolean setFaceRight) {
+		this.faceRight = setFaceRight;
+	}
+	
+
+	public void setScale(double setScale) {
+		this.scale = setScale;
+	}
+	
+
+	public void setPunching(boolean setPunching) {
+		this.punching = setPunching;
+	}
+	
+
+	public void setReg(String setReg) {
+		this.reg = setReg;
+	}
+	
+
+	public void setRev(String setRev) {
+		this.rev = setRev;
+	}
+	
+
+	public void setRevPunch(String setRevPunch) {
+		this.revpunch = setRevPunch;
+	}
+	
+
+	public void setIndex(int setIndex) {
+		this.index = setIndex;
+	}
+
+	public boolean isFaceRight() {
+		return faceRight;
+	}
+	
+
 	
 }

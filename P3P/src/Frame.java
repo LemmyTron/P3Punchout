@@ -23,7 +23,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//declare and initialize characters with null vals
 	//to fill later during selection
 	Character character1 	= null;
-	Character  character2 	= null;
+	private Character  character2 	= null;
 	//declare character for selection display
 	Character  preview 	= new Character(320, 150, 100, "henrystand.png", "henryrev.png", "henrypunch.png",  "henrypunchrev.png", 7.03, true, 1.5);
 	//declare and init objects with null vals
@@ -88,17 +88,17 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 		
-		//paint the main fighting screenwhen triggered
+		//paint the main fighting screen when triggered
 		if (bg.gameBegin && !bg.gameOver)
 		{
 		//call method to change background
 		bg.compLab();
 		//paint character
 		character1.paint(g);
-		character2.paint(g);
+		getCharacter2().paint(g);
 		//show hp score
 		g.drawString("HP: " + character1.getHpStr(), 100, 50);
-		g.drawString("HP: " + character2.getHpStr(), 650, 50);
+		g.drawString("HP: " + getCharacter2().getHpStr(), 650, 50);
 		//call time managment method
 		//and draw the timer using the vars
 		manageTime();
@@ -176,7 +176,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				//ensure there aren't repeats for char 2
 				//start the game
 				else if (preview.picked()!= preview.getDex()) {
-				    character2 = preview.whoIsYou(preview.getDex(),650,200,false);
+				    setCharacter2(preview.whoIsYou(preview.getDex(),650,200,false));
 					System.out.println("oink");
 					bg.gameBegin = true;
 					//fix scaling
@@ -227,27 +227,25 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			
 			switch (code) { 
 			
-			case 68: //character d
+			case 68: //letter d
 				   character1.moveRight();
-				   //preview.inc();
-				   //System.out.println(preview.getDex());
-				   character1.faceRight = true; 
+				   character1.setFaceRight(true); 
 				   break;
 			
 			case 65: //letter a
 				   character1.moveLeft();
-				   character1.faceRight = false; 
+				   character1.setFaceRight(false); 
 				   break;
 			
 			 
 			case 76: //letter l
-				   character2.moveRight();
-				   character2.faceRight = true; 
+				   getCharacter2().moveRight();
+				   getCharacter2().setFaceRight(true); 
 				   break;
 			  
 			case 74: //letter j
-				   character2.moveLeft();
-				   character2.faceRight = false; 
+				   getCharacter2().moveLeft();
+				   getCharacter2().setFaceRight(false); 
 				   break;
 				   
 			case 90: //letter n
@@ -255,13 +253,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				break; 
 				
 			case 77:
-				character2.punching = true;
+				getCharacter2().punching = true;
 				break;
-			//if 78 key is pressed, paint the character2's object
-				//also need to throw that object
-				
-			//case 88:
-				//break; 
+
 			 
 			   }  
 			   //start selection sequence when
@@ -273,19 +267,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				    bg.select();
 					bg.selectTime = true;
 					//turn established physics off for preview
-					preview.noPhysics = true;
+					preview.setNoPhysics(true);
 				   }
 					if(bg.gameOver) {
-					 bg.reset(character1, character2, preview);
+					 bg.reset(character1, getCharacter2(), preview);
 					}
 
 			   }
 
-			   if(arg0.getKeyCode() == 73 && character2.y == 325) { //letter m
-				   character2.jump();
+			   if(arg0.getKeyCode() == 73 && getCharacter2().getY() == 325) { //letter m
+				   getCharacter2().jump();
 			   }
 			   
-			   if(arg0.getKeyCode() == 87 && character1.y == 325) { //letter w
+			   if(arg0.getKeyCode() == 87 && character1.getY() == 325) { //letter w
 				   character1.jump();
 			   }
 			   
@@ -298,20 +292,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		int p = arg0.getKeyCode();
 		switch(p) {
 		case 90:
-			   character1.punch(character2,character1.faceRight, 10);
-			   if(character2.hp <= 0)
+			   character1.punch(getCharacter2(),character1.isFaceRight(), 10);
+			   if(getCharacter2().getHp() <= 0)
 				{
-		        bg.end(character1, character2);	 
+		        bg.end(character1, getCharacter2());	 
 				}
 			   character1.punching = false; 
 			   break;
 		case 77:
-			   character2.punch(character1,character2.faceRight, 10);
-			   if(character1.hp <= 0)
+			   getCharacter2().punch(character1,getCharacter2().isFaceRight(), 10);
+			   if(character1.getHp() <= 0)
 				{
-		        bg.end(character1, character2);
+		        bg.end(character1, getCharacter2());
 				}
-			   character2.punching = false; 
+			   getCharacter2().punching = false; 
 		   }
 		 
 		   
@@ -331,7 +325,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
         //timer reaches 0
         if(90 - soFar == 0)
         {
-        	bg.end(character1, character2);
+        	bg.end(character1, getCharacter2());
         }
 	}
 	
@@ -339,6 +333,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	public Character getCharacter2() {
+		return character2;
+	}
+	public void setCharacter2(Character character2) {
+		this.character2 = character2;
 	}
 	
 }

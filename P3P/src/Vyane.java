@@ -7,7 +7,6 @@ public class Vyane extends Character {
 	public int getX() {
 		return getX();
 	}
-	//fix this
 	public int getY() {
 		return getY();
 	}

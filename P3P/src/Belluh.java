@@ -4,10 +4,10 @@ public class Belluh extends Character{
 		// TODO Auto-generated constructor stub
 	}
 	public int getX() {
-		return x;
+		return getX();
 	}
 	public int getY() {
-		return y;
+		return getY();
 	}
 
 	
