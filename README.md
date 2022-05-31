@@ -13,7 +13,6 @@ To get started, press the space key and you'll be sent to the Character Select S
 Our classes include Frame class as the GUI, Background, and the Character parent classes. There are Character subclasses that extend Character include Aak, Belluh, HennyBaby, MD, and Vyane since each character has their own!
 
 ## Our Code: Key Methods
-### Detail important methods, etc (object creation, paint, score, game over, select screen, unique features)
 ### Paint
 In our paint method, we included code to paint the given backgrounds for start, character select, and game over, use switch cases to show certain characters on the Character Select Screen, and utilize fonts to create text updates for the Timer and HP score. Scroll for some paint code snippets!
 
