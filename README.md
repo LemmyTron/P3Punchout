@@ -63,7 +63,5 @@ All objects, sprites, and backgrounds were created by Bella on PixilArt with ins
 ## THANK YOU!
 ### sincerely, bella santos and henry lemersal :) #yassification #girlBosses #compSciQueens
 
-insert images of us below!!
+<img width="310" alt="Screen Shot 2022-05-31 at 8 09 47 AM" src="https://user-images.githubusercontent.com/90801629/171207736-c3e84484-b764-490f-9726-2d49adffaf61.png">
 
-![0A2B3D46-9B34-4CC9-BE30-0049A0619961](https://user-images.githubusercontent.com/90801629/171192366-f3cbc0ff-4ad5-41f5-86b0-db0621c0627a.JPG)
-![IMG_1786](https://user-images.githubusercontent.com/90801629/171192378-7331b789-033d-41cc-af89-9471440278b7.JPG)
