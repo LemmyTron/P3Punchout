@@ -33,7 +33,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	double start;
 	double soFar;
 	
-	//test commit
 	public void paint(Graphics g) {
 		//paint
 		super.paintComponent(g);
