@@ -75,7 +75,7 @@ public class Character {
 		
 		setFaceRight(whichWay);
 		//add constructors above to for different img strings
-			//to be assigned to values in each character subclass
+		//to be assigned to values in each character subclass
 		reg = pers;
 		rev = reverse;
 		punch = punchng;
