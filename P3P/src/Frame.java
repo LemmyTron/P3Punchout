@@ -43,7 +43,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		//paint screens and its instructions using
 		//booleans to check progression
-		//starting w/ title
+		//start w title
 		if (!bg.selectTime)
 		{
 			//create instructions on title screen
