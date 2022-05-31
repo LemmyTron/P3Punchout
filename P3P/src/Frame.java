@@ -30,11 +30,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Character character1 	= null;
 	Character  character2 	= null;
 	//declare character for selection display
-	Character  preview 	= new Character(320, 150, 100, "henrystand.png", 7.03, true, 1.5);
+	Character  preview 	= new Character(320, 150, 100, "henrystand.png", "henrystand.png", "henrypunch.png", "henrypunchrev.png", 7.03, true, 1.5);
 	//declare and init objects with null vals
 	//to fill later during selection
-	Object object1 = null;
-	Object object2 = null; 
+
 	//declare character for selection display
 	Object  previewObj = new Object(320, 150, "tennisball.png", true, 1.5);
 	//initialize variables for keeping track of time
@@ -174,25 +173,23 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				
 				//use preview method to make sure only two
 				//different players are picked 
-				if(preview.picked() == -1)
-				{
-<<<<<<< HEAD
+				if(preview.picked() == -1){
+				
 				character1 = preview.whoIsYou(preview.getDex(),80,200,true);
 			    preview.picked[preview.getDex()] = true;
 			    System.out.println("yassssss");
 			    
-			    object1 = previewObj.whatObj(previewObj.getDex(),)
-=======
 					//initialize character 1 to selected character
 					character1 = preview.whoIsYou(preview.getDex(),80,200,true);
 					//set first character being taken's slot
 					//to true
 					preview.picked[preview.getDex()] = true;
->>>>>>> branch 'main' of https://github.com/WolverineProgrammer/P3Punchout.git
-				}
+				
+			}
+				
 				else if (preview.picked()!= preview.getDex()) {
 			        //initialize character 2 to selected character
-				    character2 = preview.whoIsYou(preview.getDex(),650,200,true);
+				    character2 = preview.whoIsYou(preview.getDex(),650,200,false);
 				    //start the game
 				    //by setting gameStart var
 				    //to true
@@ -204,9 +201,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 					startTimer();
 				}
 				
+				}
+				}
 				
-			}
-		}
+				
+			
+		
 		
 	}
 
@@ -250,8 +250,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				   character1.moveRight();
 				   preview.inc();
 				   System.out.println(preview.getDex());
-				   String k = "henrypunch.png";
-				   character1.getChars(k);
+				   
 				   break;
 			case 65: //letter a
 				   character1.moveLeft();
@@ -265,21 +264,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			case 74: //letter j
 				   character2.moveLeft();
 				   break;
-				   
-			case 78: //letter n
-				character2.punchSprite = true; 
-				break; 
-				
-			case 88:
-				character1.punchSprite = true;
-				break;
-			//if 78 key is pressed, paint the character2's object
-				//also need to throw that object
-				
-
-			//case 88:
-				//break; 
-			 
+			//set punch booleans to true when necessary
+			//to allow for punching
+			case 90:
+				character1.punching = true;
+			case 77:
+				character2.punching = true;
 			   }  
 			   //start selection sequence when
 			   // when the spacebar is first pressed
@@ -313,6 +303,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//use an int w/ key code detection and such
 		//to call punch methods accordingly
 		//and end game when necessary
+		//set punch variable to false to stop punch sprite
 		int p = arg0.getKeyCode();
 		switch(p) {
 		case 90:
@@ -321,6 +312,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				{
 		        bg.end(character1, character2);	 
 				}
+		        character1.punching = false;
+
 			   break;
 
 		case 77:
@@ -329,20 +322,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				{
 		        bg.end(character1, character2);
 				}
+		        character2.punching = false;
 		   }
-		   if(arg0.getKeyCode() == 78) {
-<<<<<<< HEAD
-			   character2.punchSprite = false; 
-=======
-			   character2.punchSprite = true; 
-			   
->>>>>>> branch 'main' of https://github.com/WolverineProgrammer/P3Punchout.git
-		 
-		   }
-		   if(arg0.getKeyCode() == 88) {
-			   character1.punchSprite = false; 
-		   }
-		   
+		
 		// TODO Auto-generated method stub
 		//change boolean for right sprite
 	

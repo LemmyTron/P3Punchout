@@ -22,19 +22,17 @@ public class Character {
 	public boolean noPhysics = false;
 	//declare boolean to check which way the character faces
 	public boolean faceRight = false;	
-	
-	private Object bitcoin;
-	private Object fgrade;
-	private Object musicnotes;
-	public Object getObject; 
-	public boolean punchSprite = false; 
-	private Object plant;
-
-	//new
-	//private String punchedImg; 
-	
 	//declare scale variable for character sizes
 	private double scale;
+	
+	public boolean punching = false;
+	
+	private String reg;
+	private String rev;
+	private String punch;
+	private String revpunch;
+	
+
 	
 	//initialize and fill array with values to organize character selections
 	boolean[] picked = new boolean[6];
@@ -61,7 +59,7 @@ public class Character {
 	private AffineTransform tx;
 
 	//create character constructor for parent-class
-	public Character(int x, int y, int health, String pers, double fastness, boolean whichWay, double height) {
+	public Character(int x, int y, int health, String pers, String reverse, String punchng, String revPunching, double fastness, boolean whichWay, double height) {
 		this.x = x;
 		this.y = y;
 		hp = health;
@@ -77,6 +75,10 @@ public class Character {
 		
 		faceRight = whichWay;
 		
+		reg = pers;
+		rev = reverse;
+		punch = punchng;
+		revpunch = revPunching;
 	
 	
 	}
@@ -102,7 +104,7 @@ public class Character {
 	}
 	
 	
-	public void getChars(String yuh) {
+	public void sprite(String yuh) {
 		img = getImage(yuh);
 	}
 	
@@ -245,6 +247,19 @@ public class Character {
 		if(x > 680){
 			x = 680;
 		}	
+		//use booleans to figure out sprites
+		if(faceRight && !punching) {
+			sprite(reg);
+		}
+		if(!faceRight && !punching) {
+			sprite(rev);
+		}
+		if(faceRight && punching) {
+			sprite(punch);
+		}
+		if(!faceRight && punching) {
+			sprite(revpunch);
+		}
 	} 
 	
 	//method for getting right image
@@ -300,15 +315,12 @@ public class Character {
 		return tempImage;
 	}
 	
-<<<<<<< HEAD
 	//in character class create a method called setPunch method with punch image parameter, each character has their own assignment of that parameter 
 	public void setPunch(String punchedImg) {
 		img = getImage(punchedImg);
 	}
 	
-=======
-	//paint character method
->>>>>>> branch 'main' of https://github.com/WolverineProgrammer/P3Punchout.git
+
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
@@ -319,63 +331,16 @@ public class Character {
 		g2.drawImage(img, tx, null);
 		
 		
-		if(punchSprite == false) {
-			//tx.scale(1,  1);
-			g2.drawImage(img,  tx, null);
-		}
-		else{
-			if(punchSprite == true){
-				g2.drawImage(punchedImg, tx, null);
-			}
-			//while blah is true, set img
-			//create a method in character class called setPunch , put that in every individual character class with actual image for each character
-			//tx.scale(1, 1)
-			/*switch(index) {
-				case 0:
-					punchedImg = getImage("henrypunch.png");
-					scale = .5;
-					g2.drawImage(punchedImg, tx, null);
-					System.out.println(index); 
-					break;
-				case 1:
-					punchedImg = getImage("bellapunch.png");
-					g2.drawImage(punchedImg, tx, null);
-					System.out.println(index); 
-					break;
-				case 2:
-					punchedImg = getImage("mrdavidpunch.png");	
-					g2.drawImage(punchedImg, tx, null);
-					System.out.println(index); 
-					break;
-				case 3:
-					punchedImg = getImage("aakarshpunch.png");
-					g2.drawImage(punchedImg, tx, null);
-					System.out.println(index); 
-					break;
-				case 4:
-					punchedImg = getImage("viannepunch.png");
-					scale = .5;
-					g2.drawImage(punchedImg, tx, null);
-					System.out.println(index); 
-					break;
-				case 5:
-					punchedImg = getImage("cryptoclubpunch.png");
-					scale = .5;
-					g2.drawImage(punchedImg, tx, null);
-					System.out.println(index); 
-					break;
-			}*/
+	
 		}
 		
-		
-		
-		
-	}
-<<<<<<< HEAD
 	public int getIndex() {
 		return index; 
-=======
-
+	}
+	
+	public int getHp() {
+		return hp; 
+	}
 	
 	//setters and getters
 	
@@ -385,38 +350,7 @@ public class Character {
 	
 	public static int getDex() {
 		return index;
->>>>>>> branch 'main' of https://github.com/WolverineProgrammer/P3Punchout.git
 	}
 	
-	public Object getFgrade() {
-		return fgrade;
-	}
-
-	public void setFgrade(Object fgrade) {
-		this.fgrade = fgrade;
-	}
-
-	public Object getBitcoin() {
-		return bitcoin;
-	}
-
-	public void setBitcoin(Object bitcoin) {
-		this.bitcoin = bitcoin;
-	}
-
-	public Object getMusicnotes() {
-		return musicnotes;
-	}
-
-	public void setMusicnotes(Object musicnotes) {
-		this.musicnotes = musicnotes;
-	}
-
-	public Object getPlant() {
-		return getPlant();
-	}
-
-	public void setPlant(Object plant) {
-		this.plant = plant;
-	}
+	
 }
