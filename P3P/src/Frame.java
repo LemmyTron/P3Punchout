@@ -162,8 +162,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//select characters when button is pressed
 		if(bg.selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
 			if(arg0.getY()>=350 && arg0.getY() <= 410) {
-		
-
+			
 				//make sure no character has been selected yet
 				//char 1
 				if(preview.picked() == -1)
@@ -174,7 +173,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 				}
 			}
-
+			
 				//ensure there aren't repeats for char 2
 				//start the game
 				else if (preview.picked()!= preview.getDex()) {
@@ -189,9 +188,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 				
 			}
+			
+		
 		}
 
-	
 
 
 
