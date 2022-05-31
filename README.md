@@ -4,6 +4,7 @@ Hey y'all! Here is our legendary game: Period 3 Punchout. Unlike typical fightin
 
 <img width="771" alt="Screen Shot 2022-05-30 at 11 31 22 PM" src="https://user-images.githubusercontent.com/90801629/171107485-896a11d0-ac8e-4c9b-9cc5-3f91771980d0.png">
 
+![E2B08EF7-B9F4-48AF-9ABB-A5A6469D7C2E](https://user-images.githubusercontent.com/70670835/171136345-e416d2f9-989a-4cda-9a95-1f67715e75d0.png)
 
 ## How to Play
 To get started, press the space key and you'll be sent to the Character Select Screen. Click through the characters using the left or right arrows and select the two you want to choose for game play! Character 1 uses A and D for left and right movement, W for jump, and Z for punch. Character 2 uses J and L for left and right movement, W for jump, and M for punch. Each character starts with a certain hp of health, but each received punch causes damage and reduces that damaged character's hp by 10. You can view each character's hp score at the top left and right of the screen. Whichever character's hp reaches zero first loses and an endgame winner screen appears!
