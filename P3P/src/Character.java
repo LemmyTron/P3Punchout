@@ -32,8 +32,6 @@ public class Character {
 	private String punch;
 	private String revpunch;
 	
-	private String showHP; 
-
 	
 	//initialize and fill array with values to organize character selections
 	boolean[] picked = new boolean[6];
@@ -340,6 +338,10 @@ public class Character {
 		return index; 
 	}
 	
+	public String getHpStr() {
+		return Integer.toString(hp); 
+	}
+	
 	public int getHp() {
 		return hp; 
 	}
@@ -354,13 +356,7 @@ public class Character {
 		return index;
 	}
 
-	public String getShowHP() {
-		return showHP;
-	}
 
-	public void setShowHP(String showHP) {
-		this.showHP = showHP;
-	}
 	
 	
 }

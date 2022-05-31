@@ -93,6 +93,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 
 		}
+		
 		//paint the main fighting screenwhen triggered
 		if (bg.gameBegin && !bg.gameOver)
 		{
@@ -101,6 +102,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//paint characters
 		character1.paint(g);
 		character2.paint(g);
+		//show hp score
+		g.drawString("HP: " + character1.getHpStr(), 100, 50);
+		g.drawString("HP: " + character2.getHpStr(), 650, 50);
 		//call time managment method
 		//and draw the timer using the vars
 		manageTime();
