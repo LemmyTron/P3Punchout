@@ -28,7 +28,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Character  preview 	= new Character(320, 150, 100, "henrystand.png", "henryrev.png", "henrypunch.png",  "henrypunchrev.png", 7.03, true, 1.5);
 	//declare and init objects with null vals
 	//to fill later during selection
-	//declare character for selection display
+	//declare character for selection display 
 	//initialize variables for keeping track of time
 	double start;
 	double soFar;
