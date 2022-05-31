@@ -1,4 +1,4 @@
-# P3Punchout
+# Period 3 Punchout😮🥊
 ## Bella Santos and Henry Lemersal
 Hey y'all! Here is our legendary game: Period 3 Punchout. Unlike typical fighting games, this one features OUR AWESOME CLASS! Look out for familiar faces, locations, and more. We hope you enjoy :)
 
