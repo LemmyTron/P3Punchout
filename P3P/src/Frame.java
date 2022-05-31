@@ -1,10 +1,8 @@
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-
 import java.util.ArrayList;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -18,9 +16,6 @@ import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
-
-
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
 	//declare and instantiate background
@@ -58,6 +53,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//paint selection screen
 		if(bg.selectTime && !bg.gameBegin)
 		{
+			bg.select();
 			//create aesthetic rectangle behind preview
 			g.setColor(new Color(255,255,255));
 			g.fillRect(320, 150, 150, 160);
@@ -91,7 +87,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				g.drawString("CrypClub", 340, 335);
 				break;
 			}
-
 		}
 		
 		//paint the main fighting screenwhen triggered
@@ -99,7 +94,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		{
 		//call method to change background
 		bg.compLab();
-		//paint characters
+		//paint character
 		character1.paint(g);
 		character2.paint(g);
 		//show hp score
@@ -109,6 +104,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//and draw the timer using the vars
 		manageTime();
 		Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 50);
+		g.setFont(fnt);
 		g.setColor(new Color(0,5,0));
 		g.drawString(" " + (int)(95 - soFar) , 340, 50);
 		}
@@ -118,12 +114,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			bg.paint(g);
 			Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 20);
 			g.setFont(fnt);
-			g.drawString("Congratulations " + bg.getReadW(), 200, 400);
+			g.drawString("Congratulations " + bg.getReadW(), 230, 330);
+			g.drawString("Press Space to Play Again " , 235, 60);
+
 		}
-		
+
 
 	}
-
 	public static void main(String[] arg) {
 		Frame f = new Frame();
 	}
@@ -147,59 +144,69 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		
+
+		//decrease selection index when left arrow is pressed
+		//using method
 		if(bg.selectTime&& arg0.getX() >=20 && arg0.getX()<= 180) {
 			if(arg0.getY()>=180 && arg0.getY() <= 280) {
 				preview.dec();
 			}
 		}
+		//incresae selection index when left arrow is pressed
+		//using method
 		if(bg.selectTime &&arg0.getX() >=630 && arg0.getX()<= 790) {
 			if(arg0.getY()>=180 && arg0.getY() <= 280) {
 				preview.inc();				
 			}
 		}
+		//select characters when button is pressed
 		if(bg.selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
 			if(arg0.getY()>=350 && arg0.getY() <= 410) {
-				System.out.println(preview.picked());
-				System.out.println(preview.getDex());
+		
 
+				//make sure no character has been selected yet
+				//char 1
 				if(preview.picked() == -1)
 				{
 				character1 = preview.whoIsYou(preview.getDex(),80,200,true);
 			    preview.picked[preview.getDex()] = true;
 			    System.out.println("yassssss");
-			    
+
 				}
 			}
-				else { if (preview.picked()!= preview.getDex()) {
-				 character2 = preview.whoIsYou(preview.getDex(),650,200,false);
+
+				//ensure there aren't repeats for char 2
+				//start the game
+				else if (preview.picked()!= preview.getDex()) {
+				    character2 = preview.whoIsYou(preview.getDex(),650,200,false);
 					System.out.println("oink");
 					bg.gameBegin = true;
+					//fix scaling
 					bg.setX(getX() - 100);
+					//start the timer using the startTimer method
 					startTimer();
 				}
-				
+
 				
 			}
 		}
-		
-	}
+
+	
+
+
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		
 	}
-
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		
 	}
-
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 	
 	}
-
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -254,7 +261,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			//if 78 key is pressed, paint the character2's object
 				//also need to throw that object
 				
-
 			//case 88:
 				//break; 
 			 
@@ -262,15 +268,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   //start selection sequence when
 			   // when the spacebar is first pressed
 			   //using booleans and an if-statement
-			   if(arg0.getKeyCode() == 32 && !bg.selectTime) { //letter w
+			   if(arg0.getKeyCode() == 32) { //letter w
 				   	//call screen change method, change bool accordingly
+				   if(!bg.selectTime) {
 				    bg.select();
 					bg.selectTime = true;
 					//turn established physics off for preview
 					preview.noPhysics = true;
-	
+				   }
+					if(bg.gameOver) {
+					 bg.reset(character1, character2, preview);
+					}
+
 			   }
-			
+
 			   if(arg0.getKeyCode() == 73 && character2.y == 325) { //letter m
 				   character2.jump();
 			   }
@@ -280,7 +291,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			   }
 			   
 	}
-
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		//use an int w/ key code detection and such
@@ -296,7 +306,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			   character1.punching = false; 
 			   break;
-
 		case 77:
 			   character2.punch(character1,character2.faceRight, 10);
 			   if(character1.hp <= 0)
@@ -304,17 +313,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		        bg.end(character1, character2);
 				}
 			   character2.punching = false; 
-
 		   }
-
 		 
-
 		   
 		// TODO Auto-generated method stub
 		//change boolean for right sprite
 	
 	}
-
 	//declare timer start method
 	public void startTimer() {
 		start = System.currentTimeMillis();
@@ -336,6 +341,5 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 		
 	}
-
 	
 }

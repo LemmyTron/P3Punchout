@@ -24,9 +24,10 @@ public class Character {
 	public boolean faceRight = false;	
 	//declare scale variable for character sizes
 	private double scale;
-	
+	//declare boolean variable for if punch is called
 	public boolean punching = false;
-	
+	//declare Strings that can hold character img variations of
+		//regular stand, stand reverse, punch, and punch reverse 
 	private String reg;
 	private String rev;
 	private String punch;
@@ -66,14 +67,15 @@ public class Character {
 		img = getImage(pers); 
 	
 		scale = height;
-		
+	
 		speed = fastness; 
 		
 		tx = AffineTransform.getTranslateInstance(x, y );
 		init(x, y); 			
 		
 		faceRight = whichWay;
-		
+		//add constructors above to for different img strings
+			//to be assigned to values in each character subclass
 		reg = pers;
 		rev = reverse;
 		punch = punchng;
@@ -102,7 +104,9 @@ public class Character {
 	
 	}
 	
-	
+	//method for sprite transitions
+		//takes in String of image and sets it to img using getImage
+		//assigned in indv character subclasses
 	public void sprite(String yuh) {
 		img = getImage(yuh);
 	}
@@ -247,7 +251,8 @@ public class Character {
 			x = 680;
 		}	
 		
-		//use booleans to figure out sprites
+		//use booleans to figure out sprite transitions
+			//based on direction facind and if punching
 		if(faceRight && !punching) {
 			sprite(reg);
 		}
@@ -333,7 +338,8 @@ public class Character {
 		
 	
 		}
-		
+	//setters and getters
+	
 	public int getIndex() {
 		return index; 
 	}
@@ -345,9 +351,7 @@ public class Character {
 	public int getHp() {
 		return hp; 
 	}
-	
-	//setters and getters
-	
+		
 	public void setDex(int give) {
 		index = give ;
 	}
