@@ -155,6 +155,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				preview.inc();				
 			}
 		}
+		
 		//select characters when button is pressed
 		if(bg.selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
 			if(arg0.getY()>=350 && arg0.getY() <= 410) {
