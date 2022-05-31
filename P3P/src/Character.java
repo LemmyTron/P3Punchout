@@ -32,6 +32,7 @@ public class Character {
 	private String punch;
 	private String revpunch;
 	
+	private String showHP; 
 
 	
 	//initialize and fill array with values to organize character selections
@@ -247,6 +248,7 @@ public class Character {
 		if(x > 680){
 			x = 680;
 		}	
+		
 		//use booleans to figure out sprites
 		if(faceRight && !punching) {
 			sprite(reg);
@@ -350,6 +352,14 @@ public class Character {
 	
 	public static int getDex() {
 		return index;
+	}
+
+	public String getShowHP() {
+		return showHP;
+	}
+
+	public void setShowHP(String showHP) {
+		this.showHP = showHP;
 	}
 	
 	

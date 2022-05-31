@@ -11,8 +11,6 @@ public class Belluh extends Character{
 	public int getY() {
 		return y;
 	}
-	public String getImage(String punchedImg) {
-		return punchedImg = getImage("bellapunch.png");
-	}
+
 	
 }

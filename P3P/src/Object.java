@@ -100,36 +100,7 @@ public class Object {
 			return tempImage;
 		}
 		
-		public Object whatObj(int num, int x, int y, boolean whichWay){
-			switch(num) {
-				case 0:
-				{
-					return new TennisBall(x, y, whichWay);
-				}
-				case 1:
-				{
-					return new Plant(x, y, whichWay);
-				}
-				case 2:
-				{
-					return new FGrade(x, y, whichWay);
-				}
-				case 3:
-				{
-					return new Rocket(x, y, whichWay);
-				}
-				case 4:
-				{
-					return new MusicNotes(x, y, whichWay);
-				}
-				case 5:
-				{
-					return new Bitcoin(x, y, whichWay);
-				}
-			}
-			return null;
-			
-		}
+
 		
 		public void setImg(Image image) {
 			img = image; 

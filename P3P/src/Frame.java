@@ -30,12 +30,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Character character1 	= null;
 	Character  character2 	= null;
 	//declare character for selection display
-	Character  preview 	= new Character(320, 150, 100, "henrystand.png", "henrystand.png", "henrypunch.png", "henrypunchrev.png", 7.03, true, 1.5);
+	Character  preview 	= new Character(320, 150, 100, "henrystand.png", "henryrev.png", "henrypunch.png",  "henrypunchrev.png", 7.03, true, 1.5);
 	//declare and init objects with null vals
 	//to fill later during selection
-
 	//declare character for selection display
-	Object  previewObj = new Object(320, 150, "tennisball.png", true, 1.5);
 	//initialize variables for keeping track of time
 	double start;
 	double soFar;
@@ -60,9 +58,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//paint selection screen
 		if(bg.selectTime && !bg.gameBegin)
 		{
-			//set screen so ready for selection
-			bg.select();
-			//create aesthetic rectangle behind preview 
+			//create aesthetic rectangle behind preview
 			g.setColor(new Color(255,255,255));
 			g.fillRect(320, 150, 150, 160);
 			//paint the preview character
@@ -107,11 +103,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		character2.paint(g);
 		//call time managment method
 		//and draw the timer using the vars
-		
+		manageTime();
 		Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 50);
 		g.setColor(new Color(0,5,0));
-		g.setFont(fnt);
-		manageTime();
 		g.drawString(" " + (int)(95 - soFar) , 340, 50);
 		}
 		
@@ -120,15 +114,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			bg.paint(g);
 			Font fnt = new Font (Font.MONOSPACED, Font.BOLD, 20);
 			g.setFont(fnt);
-			//call read/write message
-			g.drawString("Congratulations " + bg.getReadW(), 240, 340);
-			g.drawString("Press Space to Play Again", 240, 30);
+			g.drawString("Congratulations " + bg.getReadW(), 200, 400);
 		}
 		
 
 	}
-	
-	//create frame
 
 	public static void main(String[] arg) {
 		Frame f = new Frame();
@@ -149,13 +139,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setVisible(true);
 		
 	}
-	//fix pulling/pushing
 	
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		
-		//use x and y values of mouse to figure out what is being selected
 		if(bg.selectTime&& arg0.getX() >=20 && arg0.getX()<= 180) {
 			if(arg0.getY()>=180 && arg0.getY() <= 280) {
 				preview.dec();
@@ -166,47 +154,30 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				preview.inc();				
 			}
 		}
-		
-		
 		if(bg.selectTime &&arg0.getX() >=310 && arg0.getX()<= 530) {
 			if(arg0.getY()>=350 && arg0.getY() <= 410) {
-				
-				//use preview method to make sure only two
-				//different players are picked 
-				if(preview.picked() == -1){
-				
+				System.out.println(preview.picked());
+				System.out.println(preview.getDex());
+
+				if(preview.picked() == -1)
+				{
 				character1 = preview.whoIsYou(preview.getDex(),80,200,true);
 			    preview.picked[preview.getDex()] = true;
 			    System.out.println("yassssss");
 			    
-					//initialize character 1 to selected character
-					character1 = preview.whoIsYou(preview.getDex(),80,200,true);
-					//set first character being taken's slot
-					//to true
-					preview.picked[preview.getDex()] = true;
-				
+				}
 			}
-				
-				else if (preview.picked()!= preview.getDex()) {
-			        //initialize character 2 to selected character
-				    character2 = preview.whoIsYou(preview.getDex(),650,200,false);
-				    //start the game
-				    //by setting gameStart var
-				    //to true
+				else { if (preview.picked()!= preview.getDex()) {
+				 character2 = preview.whoIsYou(preview.getDex(),650,200,false);
+					System.out.println("oink");
 					bg.gameBegin = true;
-					//change background accordingly
-					//w setter
 					bg.setX(getX() - 100);
-					//start the timer
 					startTimer();
 				}
 				
-				}
-				}
 				
-				
-		//
-		
+			}
+		}
 		
 	}
 
@@ -248,28 +219,41 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			
 			case 68: //character d
 				   character1.moveRight();
-				   preview.inc();
-				   System.out.println(preview.getDex());
-				   
+				   //preview.inc();
+				   //System.out.println(preview.getDex());
+				   character1.faceRight = true; 
 				   break;
+			
 			case 65: //letter a
 				   character1.moveLeft();
+				   character1.faceRight = false; 
 				   break;
 			
 			 
 			case 76: //letter l
 				   character2.moveRight();
+				   character2.faceRight = true; 
 				   break;
 			  
 			case 74: //letter j
 				   character2.moveLeft();
+				   character2.faceRight = false; 
 				   break;
-			//set punch booleans to true when necessary
-			//to allow for punching
-			case 90:
-				character1.punching = true;
+				   
+			case 90: //letter n
+				character1.punching = true; 
+				break; 
+				
 			case 77:
 				character2.punching = true;
+				break;
+			//if 78 key is pressed, paint the character2's object
+				//also need to throw that object
+				
+
+			//case 88:
+				//break; 
+			 
 			   }  
 			   //start selection sequence when
 			   // when the spacebar is first pressed
@@ -281,11 +265,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 					//turn established physics off for preview
 					preview.noPhysics = true;
 	
-			   }
-			   //restart game when necessary
-			   if(arg0.getKeyCode() == 32 && bg.gameOver)
-			   {
-				   bg.reset(character1, character2, preview);
 			   }
 			
 			   if(arg0.getKeyCode() == 73 && character2.y == 325) { //letter m
@@ -303,7 +282,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		//use an int w/ key code detection and such
 		//to call punch methods accordingly
 		//and end game when necessary
-		//set punch variable to false to stop punch sprite
 		int p = arg0.getKeyCode();
 		switch(p) {
 		case 90:
@@ -312,8 +290,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				{
 		        bg.end(character1, character2);	 
 				}
-		        character1.punching = false;
-
+			   character1.punching = false; 
 			   break;
 
 		case 77:
@@ -322,9 +299,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				{
 		        bg.end(character1, character2);
 				}
-		        character2.punching = false;
+			   character2.punching = false; 
+
 		   }
-		
+
+		 
+
+		   
 		// TODO Auto-generated method stub
 		//change boolean for right sprite
 	
@@ -347,9 +328,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	
 	@Override
-	
-
-	
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
